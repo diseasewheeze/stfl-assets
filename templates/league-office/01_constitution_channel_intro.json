@@ -6,12 +6,12 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/league-office/psbl-constitution-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-constitution-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL CONSTITUTION",
-      "description": "The Constitution is the controlling rules document of the Pitch Slapped Baseball League. Every owner accepts it as a condition of joining and is responsible for knowing it.",
+      "title": "STFL CONSTITUTION",
+      "description": "The Constitution is the controlling rules document of the Sack Tap Football League. Every owner accepts it as a condition of joining and is responsible for knowing it.",
       "color": 12398649,
       "fields": [
         {

@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/league-office/psbl-champions-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-champions-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL HALL OF CHAMPIONS",
-      "description": "The permanent record of every PSBL champion.",
+      "title": "STFL HALL OF CHAMPIONS",
+      "description": "The permanent record of every STFL champion.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL LEAGUE OFFICE"
+        "text": "STFL LEAGUE OFFICE"
       },
       "fields": [
         {
@@ -24,7 +24,7 @@
         },
         {
           "name": "DYNASTY POT",
-          "value": "The first franchise to win three PSBL Championships in the same active cycle wins the entire pot. Championships belong to the franchise, not the owner (Article IV).",
+          "value": "The first franchise to win three STFL Championships in the same active cycle wins the entire pot. Championships belong to the franchise, not the owner (Article IV).",
           "inline": false
         },
         {
@@ -34,7 +34,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

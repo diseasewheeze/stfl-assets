@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/draft-center/psbl-draft-center-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/draft-center/stfl-draft-center-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL DRAFT RESULTS",
+      "title": "STFL DRAFT RESULTS",
       "description": "The pick-by-pick record and final board.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL DRAFT CENTER"
+        "text": "STFL DRAFT CENTER"
       },
       "fields": [
         {
@@ -29,7 +29,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

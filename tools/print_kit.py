@@ -355,11 +355,11 @@ def _rgb(name):
 def write_pdf(doc: Doc, path: Path) -> None:
     c = rl_canvas.Canvas(str(path), pagesize=(doc.w, doc.h), pageCompression=1)
     c.setTitle(doc.title)
-    c.setAuthor("Pitch Slapped Baseball League")
-    c.setCreator("PSBL League Office")
+    c.setAuthor("Sack Tap Football League")
+    c.setCreator("STFL League Office")
     c.setSubject(doc.title)
     if hasattr(c, "setProducer"):
-        c.setProducer("PSBL League Office")
+        c.setProducer("STFL League Office")
     H = doc.h
     errors = []
     for pn, page in enumerate(doc.pages, 1):

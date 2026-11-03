@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the complete PSBL brand/graphics package in the 8-bit arcade style.
+"""Build the complete STFL brand/graphics package in the 8-bit arcade style.
 
 Usage: build_brand_package.py [OUT_DIR]   (default: brand/kit)
 
@@ -48,15 +48,16 @@ Banners, headers, dividers and stamps use an 8 px grid (one pixel = 8 px).
 Built by tools/build_brand_package.py (drawing code in tools/pixel_kit.py).
 League name and year come from brand/identity.json.
 
-Palette: navy #0C2340, red #BD3039, white #FFFFFF, with deep navy #071528 and
-off-white paper #F6F7F9. Light navy #8FA6C7 marks pending, amended and
-champions stamps. Status green #3FA34D appears on stamps only. Team colors
-appear only on small jersey or stripe elements, never on league marks.
+Palette: Patriots-aligned navy #002244, red #C60C30, silver #B0B7BC, white #FFFFFF, with
+deep navy #00142A and off-white paper #F6F7F9. Light navy #8FA6C7 marks pending, amended
+and champions stamps. Status green #3FA34D appears on stamps only. Leather browns appear on
+the football only. Team colors appear only on small jersey or stripe elements, never on league marks.
 Type: Jersey 10 ({S}, titles) and Silkscreen (labels), in brand/fonts with OFL.txt.
 Official marks: {S} in Jersey 10 with red then navy keylines, and the league
-emblem, a pixel baseball (white ball, red seams and stitches, red then navy keylines).
+emblem, a pixel football at 45 degrees (leather, white laces, red then navy keylines).
+Tagline: "No flags. No mercy." (title screen only).
 
-01_logos                 Wordmarks (transparent white / navy, textured paper) and the baseball emblem
+01_logos                 Wordmarks (transparent white / navy, textured paper) and the football emblem
 02_avatars_icons         Server icon, webhook/bot avatar, profile pic, emoji, favicon
 03_server_social_banners Discord server banner/splash, social preview, X header, event cover
 04_channel_headers       1600x533 (3:1) headers for every channel category + welcome + generic
@@ -66,14 +67,14 @@ emblem, a pixel baseball (white ball, red seams and stitches, red then navy keyl
 File names are kept from the first kit so existing links keep working. The color
 words in some names are the old ones: "black" files are deep navy, "charcoal"
 files are navy, "cream" files are off-white paper, "gold" files are red, and the
-"b-mark" / "b-icon" / "emoji-b" files show the baseball emblem.
+"b-mark" / "b-icon" / "emoji-b" files show the football emblem.
 
 Discord notes
 - Embed images display at ~400px wide; headers are 3:1 so text stays readable.
 - Discord caches by URL: when you replace a file, bump the ?v= version in
   tools/discohook_format.py and run tools/normalize_discohook_templates.py.
 - Server banner needs a boosted server; recommended 960x540 or larger (16:9).
-- Avatars use the small 14 x 14 pixel baseball so they stay sharp at Discord's 40-48 px.
+- Avatars use the small 14 x 14 pixel football so they stay sharp at Discord's 40-48 px.
 - Stamps are transparent PNGs: use as embed thumbnail or image in rulings, votes and ledger posts.
 """
 
@@ -86,59 +87,59 @@ def build_kit(out: Path) -> dict[str, list[tuple[str, Image.Image]]]:
         made.setdefault(group, []).append((name, img.convert(mode)))
 
     g = "01_logos"
-    put(g, "psbl-wordmark-white-transparent.png", px.wordmark_transparent((2000, 866), "white", 7), "RGBA")
-    put(g, "psbl-wordmark-black-transparent.png", px.wordmark_transparent((2000, 799), "black", 7), "RGBA")
-    put(g, "psbl-wordmark-textured-cream.png", px.wordmark_paper())
-    put(g, "psbl-wordmark-on-charcoal-1920x1080.png", px.wordmark_on((1920, 1080), px.NAVY, "white", 6))
-    put(g, "psbl-wordmark-on-black-1920x1080.png", px.wordmark_on((1920, 1080), px.NAVY_DK, "white", 6))
-    put(g, "psbl-wordmark-on-white-1920x1080.png", px.wordmark_on((1920, 1080), px.WHITE, "black", 6))
-    put(g, "psbl-b-mark-transparent-1024.png", px.emblem_mark((889, 1024), 27), "RGBA")
+    put(g, "stfl-wordmark-white-transparent.png", px.wordmark_transparent((2000, 866), "white", 7), "RGBA")
+    put(g, "stfl-wordmark-black-transparent.png", px.wordmark_transparent((2000, 799), "black", 7), "RGBA")
+    put(g, "stfl-wordmark-textured-cream.png", px.wordmark_paper())
+    put(g, "stfl-wordmark-on-charcoal-1920x1080.png", px.wordmark_on((1920, 1080), px.NAVY, "white", 6))
+    put(g, "stfl-wordmark-on-black-1920x1080.png", px.wordmark_on((1920, 1080), px.NAVY_DK, "white", 6))
+    put(g, "stfl-wordmark-on-white-1920x1080.png", px.wordmark_on((1920, 1080), px.WHITE, "black", 6))
+    put(g, "stfl-b-mark-transparent-1024.png", px.emblem_mark((889, 1024), 27), "RGBA")
     for name, col in (("black", px.NAVY_DK), ("charcoal", px.NAVY), ("cream", px.PAPER), ("gold", px.RED)):
-        put(g, f"psbl-b-icon-{name}-1024.png", px.emblem_icon(1024, col))
+        put(g, f"stfl-b-icon-{name}-1024.png", px.emblem_icon(1024, col))
 
     g = "02_avatars_icons"
-    put(g, "psbl-server-icon-1024.png", px.avatar(1024))
-    put(g, "psbl-webhook-avatar-512.png", px.avatar(512))
-    put(g, "psbl-bot-avatar-round-512.png", px.avatar(512, round_=True), "RGBA")
-    put(g, "psbl-profile-picture-400.png", px.avatar(400))
+    put(g, "stfl-server-icon-1024.png", px.avatar(1024))
+    put(g, "stfl-webhook-avatar-512.png", px.avatar(512))
+    put(g, "stfl-bot-avatar-round-512.png", px.avatar(512, round_=True), "RGBA")
+    put(g, "stfl-profile-picture-400.png", px.avatar(400))
     for s in (128, 64):
-        put(g, f"psbl-emoji-b-{s}.png", px.emoji(s), "RGBA")
-    put(g, "psbl-favicon-256.png", px.emoji(256, px.NAVY))
+        put(g, f"stfl-emoji-b-{s}.png", px.emoji(s), "RGBA")
+    put(g, "stfl-favicon-256.png", px.emoji(256, px.NAVY))
 
     g = "03_server_social_banners"
     big = bda.server_banner()
-    put(g, "psbl-server-banner-960x540.png", big.resize((960, 540), Image.NEAREST))
-    put(g, "psbl-server-banner-1920x1080.png", big)
-    put(g, "psbl-invite-splash-1920x1080.png", px.splash())
-    put(g, "psbl-github-social-preview-1280x640.png", px.banner((1280, 640), 18, 3, dy=24))
-    put(g, "psbl-x-header-1500x500.png", px.banner((1500, 500), 12, 2, dy=20))
-    put(g, "psbl-bot-profile-banner-1360x480.png", px.banner((1360, 480), 12, 2, dy=20))
-    put(g, "psbl-event-cover-800x320.png", px.banner((800, 320), 10, 2, dy=16, bats=True, sub_bold=False))
+    put(g, "stfl-server-banner-960x540.png", big.resize((960, 540), Image.NEAREST))
+    put(g, "stfl-server-banner-1920x1080.png", big)
+    put(g, "stfl-invite-splash-1920x1080.png", px.splash())
+    put(g, "stfl-github-social-preview-1280x640.png", px.banner((1280, 640), 18, 3, dy=24))
+    put(g, "stfl-x-header-1500x500.png", px.banner((1500, 500), 12, 2, dy=20))
+    put(g, "stfl-bot-profile-banner-1360x480.png", px.banner((1360, 480), 12, 2, dy=20))
+    put(g, "stfl-event-cover-800x320.png", px.banner((800, 320), 10, 2, dy=16, bats=True, sub_bold=False))
 
     g = "04_channel_headers"
     for _rel, slug, img in bda.all_headers():
-        put(g, f"psbl-{slug}-header-1600x533.png", img)
+        put(g, f"stfl-{slug}-header-1600x533.png", img)
 
     g = "05_dividers"
-    put(g, "psbl-footer-divider-1600x180.png", bda.make_footer(), "RGBA")
-    put(g, "psbl-thin-rule-1600x40.png", px.thin_rule(), "RGBA")
-    put(g, "psbl-gold-bar-1600x24.png", px.red_bar(), "RGBA")
+    put(g, "stfl-footer-divider-1600x180.png", bda.make_footer(), "RGBA")
+    put(g, "stfl-thin-rule-1600x40.png", px.thin_rule(), "RGBA")
+    put(g, "stfl-gold-bar-1600x24.png", px.red_bar(), "RGBA")
 
     g = "06_seals_stamps"
-    put(g, "psbl-official-seal-dark-1024.png", px.seal(dark=True), "RGBA")
-    put(g, "psbl-official-seal-cream-1024.png", px.seal(dark=False), "RGBA")
-    put(g, "psbl-official-seal-256.png", px.seal(dark=True, k=1), "RGBA")
+    put(g, "stfl-official-seal-dark-1024.png", px.seal(dark=True), "RGBA")
+    put(g, "stfl-official-seal-cream-1024.png", px.seal(dark=False), "RGBA")
+    put(g, "stfl-official-seal-256.png", px.seal(dark=True, k=1), "RGBA")
     for i, (slug, word, col, sub) in enumerate(STAMPS):
-        put(g, f"psbl-stamp-{slug}.png", px.stamp(word, col, sub, seed=11 + 7 * i), "RGBA")
+        put(g, f"stfl-stamp-{slug}.png", px.stamp(word, col, sub, seed=11 + 7 * i), "RGBA")
 
     (out / "README.txt").write_text(README, encoding="utf-8")
     manifest = {k: [name for name, _img in v] for k, v in made.items()}
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     groups = [(k.upper(), v) for k, v in made.items()]
-    px.save(out / "PSBL_Package_Contact_Sheet.png",
+    px.save(out / "STFL_Package_Contact_Sheet.png",
             px.contact_sheet(f"{S} BRAND & GRAPHICS PACKAGE", groups, (1800, 5241)), "RGB")
     if out == ROOT / "brand" / "kit":  # the older root-level preview of the same package
-        px.save(ROOT / "PSBL_Revised_Header_Preview.png",
+        px.save(ROOT / "STFL_Revised_Header_Preview.png",
                 px.contact_sheet(f"{S} BRAND & GRAPHICS PACKAGE", groups, (1800, 5033)), "RGB")
     return made
 
@@ -146,13 +147,13 @@ def build_kit(out: Path) -> dict[str, list[tuple[str, Image.Image]]]:
 def build_marks(brand: Path) -> list[Path]:
     """The source marks other tools read (same names and sizes as before)."""
     marks = [
-        (brand / "primary" / "psbl-b-mark.png", px.emblem_mark((395, 455), 12), "RGBA"),
-        (brand / "primary" / "psbl-primary-logo.png", px.wordmark_paper(), "RGB"),
-        (brand / "secondary" / "psbl-league-stamp.png", px.seal(dark=False), "RGBA"),
-        (brand / "icon" / "psbl-rink-mark.png", px.emblem_icon(1024, px.NAVY), "RGB"),
-        (brand / "source" / "psbl-wordmark-white.png", px.wordmark_transparent((1448, 1086), "white", 6), "RGBA"),
-        (brand / "source" / "psbl-wordmark-black.png", px.wordmark_transparent((1448, 1086), "black", 6), "RGBA"),
-        (brand / "source" / "psbl-wordmark-textured-cream.png", px.wordmark_paper(), "RGB"),
+        (brand / "primary" / "stfl-b-mark.png", px.emblem_mark((395, 455), 12), "RGBA"),
+        (brand / "primary" / "stfl-primary-logo.png", px.wordmark_paper(), "RGB"),
+        (brand / "secondary" / "stfl-league-stamp.png", px.seal(dark=False), "RGBA"),
+        (brand / "icon" / "stfl-rink-mark.png", px.emblem_icon(1024, px.NAVY), "RGB"),
+        (brand / "source" / "stfl-wordmark-white.png", px.wordmark_transparent((1448, 1086), "white", 6), "RGBA"),
+        (brand / "source" / "stfl-wordmark-black.png", px.wordmark_transparent((1448, 1086), "black", 6), "RGBA"),
+        (brand / "source" / "stfl-wordmark-textured-cream.png", px.wordmark_paper(), "RGB"),
     ]
     for path, img, mode in marks:
         px.save(path, img, mode)

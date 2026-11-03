@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PSBL Commissioner Desk: private reminders for the manual work that keeps the league on track.
+"""STFL Commissioner Desk: private reminders for the manual work that keeps the league on track.
 
 Reads the Fantrax season calendar, works out when each task in tasks.yaml is
 due (an anchor such as "the last regular week is final" plus an offset) and
@@ -184,7 +184,7 @@ def build_payload(
     ping = str(desk_cfg.get("ping_user_id") or "").strip()
     body = "\n\n".join(task["items"])
     section = task.get("section")
-    footer = "PSBL COMMISSIONER DESK"
+    footer = "STFL COMMISSIONER DESK"
     if section:
         footer += f" • CHECKLIST {section.upper()}"
     when = ""
@@ -194,7 +194,7 @@ def build_payload(
     if overdue:
         body = "This reminder is late, so it may have been missed. Please check it now.\n\n" + body
     payload: dict[str, Any] = {
-        "username": "PSBL Commissioner Desk",
+        "username": "STFL Commissioner Desk",
         "avatar_url": AVATAR,
         "allowed_mentions": {"users": [ping]} if ping else {"parse": []},
         "embeds": [{
@@ -240,9 +240,9 @@ def run(mode: str, now: datetime | None = None) -> int:
     sent: dict[str, str] = state.setdefault("sent", {})
     stored: dict[str, str] = state.setdefault("anchors", {})
 
-    print(f"PSBL COMMISSIONER DESK mode={mode.upper()} now={now.astimezone(tz).isoformat()}")
+    print(f"STFL COMMISSIONER DESK mode={mode.upper()} now={now.astimezone(tz).isoformat()}")
 
-    fx = Fantrax(str(cfg["league_id"]), user_agent="PSBL-Commissioner-Desk/1.0")
+    fx = Fantrax(str(cfg["league_id"]), user_agent="STFL-Commissioner-Desk/1.0")
     info: dict[str, Any] = {}
     try:
         info = fx.league_info()

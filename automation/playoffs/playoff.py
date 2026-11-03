@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PSBL playoffs: live bracket for Fantrax's six-team H2H playoff format.
+"""STFL playoffs: live bracket for Fantrax's six-team H2H playoff format.
 
   Round 1: 3 vs 6 and 4 vs 5; Seeds 1 and 2 receive byes.
   Round 2: reseed. Seed 1 plays the lowest-ranked survivor, Seed 2 the highest.
@@ -231,8 +231,8 @@ def build_payload(
     test: bool = False,
     extras: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    title = "[TEST] PSBL Playoffs" if test else "PSBL Playoffs"
-    league = str(info.get("leagueName") or "Pitch Slapped Baseball League")
+    title = "[TEST] STFL Playoffs" if test else "STFL Playoffs"
+    league = str(info.get("leagueName") or "Sack Tap Football League")
     season_label = str(cfg.get("season_label") or "")
 
     fields: list[dict[str, Any]] = []
@@ -309,7 +309,7 @@ def build_payload(
     description += "\n\n*Fantrax read-only playoff bracket.*"
 
     return {
-        "username": "PSBL Competition Desk",
+        "username": "STFL Competition Desk",
         "avatar_url": AVATAR,
         "allowed_mentions": {"parse": []},
         "embeds": [
@@ -561,7 +561,7 @@ def main() -> int:
     comp = league.get("competition") or {}
     cfg = {"season_label": league.get("season_label") or "", "color": league.get("color"), "channel_label": "PLAYOFFS"}
     secret = str((comp.get("webhooks") or {}).get("playoffs") or "LEAGUE_WEBHOOK_PLAYOFFS")
-    fx = Fantrax(str(league["league_id"]), user_agent="PSBL-Playoffs/2.0")
+    fx = Fantrax(str(league["league_id"]), user_agent="STFL-Playoffs/2.0")
     now = datetime.now(timezone.utc)
 
     try:
@@ -592,7 +592,7 @@ def main() -> int:
         consolation = consolation_seed_map(standings, cutoff)
         seed_source = "current Fantrax standings"
 
-    print(f"PSBL PLAYOFFS mode={args.mode.upper()} season={season.describe(info, now)} "
+    print(f"STFL PLAYOFFS mode={args.mode.upper()} season={season.describe(info, now)} "
           f"current_week={current} seeds_from={seed_source}")
 
     if args.mode in ("baseline", "live") and not stored:

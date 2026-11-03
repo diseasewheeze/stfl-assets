@@ -1,5 +1,5 @@
-name: PSBL Scheduler
-run-name: PSBL Scheduler — ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'dry-run' || 'live' }}
+name: STFL Scheduler
+run-name: STFL Scheduler — ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && 'dry-run' || 'live' }}
 
 # The one place automation timing lives. See automation/scheduler/README.md.
 #
@@ -25,7 +25,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: psbl-scheduler
+  group: stfl-scheduler
   cancel-in-progress: false
 
 jobs:

@@ -1,0 +1,30 @@
+{
+  "phase": "2C.6-frozen",
+  "style": "8-bit arcade",
+  "asset_version": "8bit-stfl-1",
+  "header_dimensions": "1600x533",
+  "header_grid": "200x67 pixels at 8 px",
+  "header_embed_color": "#0C2340",
+  "footer_dimensions": "1600x180 (legacy filename retained for stable URLs)",
+  "footer_background": "transparent",
+  "palette": {
+    "navy": "#002244",
+    "red": "#C60C30",
+    "silver": "#B0B7BC",
+    "white": "#FFFFFF",
+    "deep_navy": "#00142A",
+    "off_white": "#F6F7F9",
+    "red_light": "#D9545C",
+    "status_green": "#3FA34D"
+  },
+  "fonts": {
+    "display": "Jersey 10",
+    "labels": "Silkscreen"
+  },
+  "design": {
+    "status": "frozen layout, 8-bit artwork",
+    "right_mark": "pixel football emblem (leather, white laces, red then navy keylines), fully inset",
+    "wordmark": "STFL in Jersey 10 with red then navy keylines; wordmark file kept for legacy use",
+    "footer": "transparent white/red/white divider running into a centered pixel football"
+  }
+}

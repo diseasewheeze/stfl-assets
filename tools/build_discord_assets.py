@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build the PSBL Discohook assets in the 8-bit arcade style.
+"""Build the STFL Discohook assets in the 8-bit arcade style.
 
 Writes discord/webhooks/** (channel headers, footer divider, webhook avatar,
 banner wordmark, hosting preview, manifest, README), discord/server/** and
-PSBL_URL_MAP.txt. All artwork is pixel art drawn by tools/pixel_kit.py.
+STFL_URL_MAP.txt. All artwork is pixel art drawn by tools/pixel_kit.py.
 
 Raw GitHub paths never change, so existing Discohook JSON keeps its URLs. The
 ?v= version in tools/discohook_format.py is what makes Discord fetch new art:
@@ -28,31 +28,31 @@ WEBHOOKS = ROOT / "discord" / "webhooks"
 SERVER = ROOT / "discord" / "server"
 
 S = px.LEAGUE_SHORT
-# (file under discord/webhooks, title, eyebrow, kit slug: brand/kit names it psbl-<slug>-header-1600x533.png)
+# (file under discord/webhooks, title, eyebrow, kit slug: brand/kit names it stfl-<slug>-header-1600x533.png)
 HEADERS = [
-    ("welcome/psbl-welcome-banner.png", f"WELCOME TO THE {S}", "WELCOME TO THE CLUBHOUSE", "welcome"),
-    ("league-office/psbl-constitution-header.png", "LEAGUE CONSTITUTION", f"OFFICIAL {S} RULEBOOK", "constitution"),
-    ("league-office/psbl-announcements-header.png", "LEAGUE ANNOUNCEMENTS", f"OFFICIAL {S} NOTICE", "announcements"),
-    ("league-office/psbl-calendar-header.png", "LEAGUE CALENDAR", f"OFFICIAL {S} CALENDAR", "calendar"),
-    ("league-office/psbl-ledger-header.png", "LEAGUE LEDGER", f"OFFICIAL {S} LEDGER", "ledger"),
-    ("league-office/psbl-voting-header.png", "LEAGUE VOTING", f"OFFICIAL {S} VOTE", "voting"),
-    ("draft-center/psbl-draft-center-header.png", "DRAFT CENTER", f"OFFICIAL {S} DRAFT", "draft-center"),
-    ("the-wire/psbl-the-wire-header.png", "THE WIRE", f"{S} NEWS DESK", "the-wire"),
-    ("general-managers/psbl-general-managers-header.png", "GENERAL MANAGERS", "THE CLUBHOUSE", "general-managers"),
-    ("trade-center/psbl-trade-center-header.png", "TRADE CENTER", f"OFFICIAL {S} TRADES", "trade-center"),
-    ("scouting/psbl-scouting-header.png", "SCOUTING DEPARTMENT", "PROSPECTS & PICKS", "scouting"),
-    ("waiver-wire/psbl-waiver-wire-header.png", "WAIVER WIRE", "FAAB & CLAIMS", "waiver-wire"),
-    ("league-competition/psbl-competition-header.png", "LEAGUE COMPETITION", "STANDINGS & PLAYOFFS", "competition"),
-    ("commissioners-office/psbl-commissioners-office-header.png", "COMMISSIONER'S OFFICE", f"OFFICIAL {S} RULINGS", "commissioners-office"),
-    ("franchise-hq/psbl-franchise-hq-header.png", "FRANCHISE HQ", "YOUR CLUB, YOUR CALLS", "franchise-hq"),
-    ("league-office/psbl-champions-header.png", f"{S} CHAMPIONS", "PERMANENT LEAGUE HISTORY", "champions"),
-    ("league-office/psbl-records-header.png", "LEAGUE RECORDS", "THE PERMANENT RECORD", "records"),
-    ("shared/psbl-generic-header-1600x420.png", px.LEAGUE_NAME.upper(), f"OFFICIAL {S}", "generic"),
+    ("welcome/stfl-welcome-banner.png", f"WELCOME TO THE {S}", "WELCOME TO THE CLUBHOUSE", "welcome"),
+    ("league-office/stfl-constitution-header.png", "LEAGUE CONSTITUTION", f"OFFICIAL {S} RULEBOOK", "constitution"),
+    ("league-office/stfl-announcements-header.png", "LEAGUE ANNOUNCEMENTS", f"OFFICIAL {S} NOTICE", "announcements"),
+    ("league-office/stfl-calendar-header.png", "LEAGUE CALENDAR", f"OFFICIAL {S} CALENDAR", "calendar"),
+    ("league-office/stfl-ledger-header.png", "LEAGUE LEDGER", f"OFFICIAL {S} LEDGER", "ledger"),
+    ("league-office/stfl-voting-header.png", "LEAGUE VOTING", f"OFFICIAL {S} VOTE", "voting"),
+    ("draft-center/stfl-draft-center-header.png", "DRAFT CENTER", f"OFFICIAL {S} DRAFT", "draft-center"),
+    ("the-wire/stfl-the-wire-header.png", "THE WIRE", f"{S} NEWS DESK", "the-wire"),
+    ("general-managers/stfl-general-managers-header.png", "GENERAL MANAGERS", "THE CLUBHOUSE", "general-managers"),
+    ("trade-center/stfl-trade-center-header.png", "TRADE CENTER", f"OFFICIAL {S} TRADES", "trade-center"),
+    ("scouting/stfl-scouting-header.png", "SCOUTING DEPARTMENT", "PROSPECTS & PICKS", "scouting"),
+    ("waiver-wire/stfl-waiver-wire-header.png", "WAIVER WIRE", "FAAB & CLAIMS", "waiver-wire"),
+    ("league-competition/stfl-competition-header.png", "LEAGUE COMPETITION", "STANDINGS & PLAYOFFS", "competition"),
+    ("commissioners-office/stfl-commissioners-office-header.png", "COMMISSIONER'S OFFICE", f"OFFICIAL {S} RULINGS", "commissioners-office"),
+    ("franchise-hq/stfl-franchise-hq-header.png", "FRANCHISE HQ", "YOUR CLUB, YOUR CALLS", "franchise-hq"),
+    ("league-office/stfl-champions-header.png", f"{S} CHAMPIONS", "PERMANENT LEAGUE HISTORY", "champions"),
+    ("league-office/stfl-records-header.png", "LEAGUE RECORDS", "THE PERMANENT RECORD", "records"),
+    ("shared/stfl-generic-header-1600x420.png", px.LEAGUE_NAME.upper(), f"OFFICIAL {S}", "generic"),
 ]
 
 
 def make_header(title: str, kicker: str, seed: int = 7) -> Image.Image:
-    """1600 x 533 channel header (3:1): red eyebrow, big title, the pixel baseball on the right."""
+    """1600 x 533 channel header (3:1): red eyebrow, big title, the pixel football on the right."""
     return px.header(title, kicker, seed)
 
 
@@ -62,7 +62,7 @@ def all_headers() -> list[tuple[str, str, Image.Image]]:
 
 
 def make_footer() -> Image.Image:
-    """Transparent 1600 x 180 divider (lines running into a pixel baseball) under every Discohook message."""
+    """Transparent 1600 x 180 divider (lines running into a pixel football) under every Discohook message."""
     return px.footer_divider()
 
 
@@ -104,11 +104,11 @@ tools/build_discord_assets.py (shared drawing code in tools/pixel_kit.py).
 - Headers: 1600x533 (3:1) on a 200 x 67 pixel grid at 8 px per pixel, so each pixel
   is 2 px wide when Discord shows the image at 400 px.
 - Header embed side color: #{HEADER_COLOR:06X} (HEADER_COLOR in tools/discohook_format.py).
-- Footer: transparent 1600x180 PNG (legacy filename psbl-footer-divider-1600x90.png kept).
-- Palette: navy #0C2340, red #BD3039, white #FFFFFF, deep navy #071528, off-white #F6F7F9;
+- Footer: transparent 1600x180 PNG (legacy filename stfl-footer-divider-1600x90.png kept).
+- Palette: navy #002244, red #C60C30, silver #B0B7BC, white #FFFFFF, deep navy #00142A, off-white #F6F7F9;
   small red text on navy uses #D9545C. Status green #3FA34D is for stamps only.
 - Type: Jersey 10 for titles and Silkscreen for eyebrows and labels (brand/fonts).
-- The right side of every header carries the league emblem, a pixel baseball.
+- The right side of every header carries the league emblem, a pixel football.
 - Image URLs carry a cache-busting version ({HEADER_VERSION} on headers, ?{FOOTER_URL.split('?')[1]} on the footer),
   set in tools/discohook_format.py. Bump it whenever the artwork changes, then run
   tools/normalize_discohook_templates.py.
@@ -120,17 +120,17 @@ def main() -> None:
     for rel, _slug, img in headers:
         px.save(WEBHOOKS / rel, img, "RGB")
     footer = make_footer()
-    px.save(WEBHOOKS / "shared" / "psbl-footer-divider-1600x90.png", footer, "RGBA")
-    px.save(WEBHOOKS / "shared" / "psbl-banner-wordmark.png", banner_wordmark(), "RGBA")
-    px.save(WEBHOOKS / "avatar" / "psbl-webhook-avatar-512.png", px.avatar(512), "RGB")
-    px.save(SERVER / "psbl-server-icon-1024.png", px.avatar(1024), "RGB")
-    px.save(SERVER / "psbl-server-banner-1920x1080.png", server_banner(), "RGB")
-    px.save(WEBHOOKS / "PSBL_Phase_2C6_Hosting_Preview.png",
+    px.save(WEBHOOKS / "shared" / "stfl-footer-divider-1600x90.png", footer, "RGBA")
+    px.save(WEBHOOKS / "shared" / "stfl-banner-wordmark.png", banner_wordmark(), "RGBA")
+    px.save(WEBHOOKS / "avatar" / "stfl-webhook-avatar-512.png", px.avatar(512), "RGB")
+    px.save(SERVER / "stfl-server-icon-1024.png", px.avatar(1024), "RGB")
+    px.save(SERVER / "stfl-server-banner-1920x1080.png", server_banner(), "RGB")
+    px.save(WEBHOOKS / "STFL_Phase_2C6_Hosting_Preview.png",
             build_preview([(Path(rel).name, img) for rel, _s, img in headers], footer), "RGB")
 
-    base = "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/"
-    (ROOT / "PSBL_URL_MAP.txt").write_text(
-        f"""{S} RAW ASSET URLS\n\nWelcome banner:\n{base}welcome/psbl-welcome-banner.png\n\nFooter divider:\n{base}shared/psbl-footer-divider-1600x90.png\n\nGeneric header:\n{base}shared/psbl-generic-header-1600x420.png\n\nBanner wordmark:\n{base}shared/psbl-banner-wordmark.png\n\nHosting preview:\n{base}PSBL_Phase_2C6_Hosting_Preview.png\n\nConstitution:\n{base}league-office/psbl-constitution-header.png\n\nAnnouncements:\n{base}league-office/psbl-announcements-header.png\n\nCalendar:\n{base}league-office/psbl-calendar-header.png\n\nLedger:\n{base}league-office/psbl-ledger-header.png\n\nVoting:\n{base}league-office/psbl-voting-header.png\n\nDraft Center:\n{base}draft-center/psbl-draft-center-header.png\n""",
+    base = "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/"
+    (ROOT / "STFL_URL_MAP.txt").write_text(
+        f"""{S} RAW ASSET URLS\n\nWelcome banner:\n{base}welcome/stfl-welcome-banner.png\n\nFooter divider:\n{base}shared/stfl-footer-divider-1600x90.png\n\nGeneric header:\n{base}shared/stfl-generic-header-1600x420.png\n\nBanner wordmark:\n{base}shared/stfl-banner-wordmark.png\n\nHosting preview:\n{base}STFL_Phase_2C6_Hosting_Preview.png\n\nConstitution:\n{base}league-office/stfl-constitution-header.png\n\nAnnouncements:\n{base}league-office/stfl-announcements-header.png\n\nCalendar:\n{base}league-office/stfl-calendar-header.png\n\nLedger:\n{base}league-office/stfl-ledger-header.png\n\nVoting:\n{base}league-office/stfl-voting-header.png\n\nDraft Center:\n{base}draft-center/stfl-draft-center-header.png\n""",
         encoding="utf-8",
     )
 
@@ -143,17 +143,17 @@ def main() -> None:
         "header_embed_color": f"#{HEADER_COLOR:06X}",
         "footer_dimensions": "1600x180 (legacy filename retained for stable URLs)",
         "footer_background": "transparent",
-        "palette": {"navy": "#0C2340", "red": "#BD3039", "white": "#FFFFFF", "deep_navy": "#071528",
+        "palette": {"navy": "#002244", "red": "#C60C30", "silver": "#B0B7BC", "white": "#FFFFFF", "deep_navy": "#00142A",
                     "off_white": "#F6F7F9", "red_light": "#D9545C", "status_green": "#3FA34D"},
         "fonts": {"display": "Jersey 10", "labels": "Silkscreen"},
         "design": {
             "status": "frozen layout, 8-bit artwork",
-            "right_mark": "pixel baseball emblem (white ball, red seams, red then navy keylines), fully inset",
+            "right_mark": "pixel football emblem (leather, white laces, red then navy keylines), fully inset",
             "wordmark": f"{S} in Jersey 10 with red then navy keylines; wordmark file kept for legacy use",
-            "footer": "transparent white/red/white divider running into a centered pixel baseball",
+            "footer": "transparent white/red/white divider running into a centered pixel football",
         },
     }
-    (WEBHOOKS / "PSBL_Phase_2C6_Hosting_Manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    (WEBHOOKS / "STFL_Phase_2C6_Hosting_Manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     (WEBHOOKS / "README.md").write_text(README, encoding="utf-8")
     print(f"{S} 8-bit Discohook assets generated ({len(HEADERS)} headers, version {HEADER_VERSION}).")
 

@@ -9,20 +9,21 @@ in tools/pixel_kit.py).
 
 PALETTE
 -------
-The brand reads as navy, red and white.
-  Navy        #0C2340   main ground (banners, headers), letter fill on light grounds
-  Deep navy   #071528   deepest ground, outer keylines, counters
-  Red         #BD3039   the accent: keylines, rails, rules, bars; red status stamps
-  White       #FFFFFF   letter fill of the short name, the ball, titles on navy
-  Off-white   #F6F7F9   textured paper ground
-  Status green #3FA34D  stamps only (approved, vote passed, paid in full)
+The brand reads as navy, red, silver and white, the Patriots' colors (New England theme).
+  Nautical navy #002244   main ground (banners, headers), letter fill on light grounds
+  Deep navy     #00142A   deepest ground, outer keylines, counters
+  Red           #C60C30   the accent: keylines, rails, rules, bars; red status stamps
+  Silver        #B0B7BC   New Century silver: sign-off text, the tagline, goalposts, steel
+  White         #FFFFFF   letter fill of the short name, laces, titles on navy
+  Off-white     #F6F7F9   textured paper ground
+  Status green  #3FA34D   stamps only (approved, vote passed, paid in full)
 
   Tones (one step lighter or darker, for grain, dither and bevels only):
-  light red #D9545C (small red text on navy), dark red #8E1F27, light navy
-  #16325A, sky #8FA6C7 (pending, amended and champions stamps), bleachers
-  #081A30, muted text #A0AEC4, steel #9AA1A9 / #6E747C.
-  Ballpark scenes: mown outfield #0F2C50 / #143660, infield clay #8C3436 with
-  #72282C and #A04242 for texture.
+  light red #E64862 (small red text on navy), dark red #8C0822, light navy #0E3662,
+  sky #8FA6C7 (pending, amended and champions stamps), stands #021932, dark steel #7A8289.
+  Field: navy mowing stripes #062C52 / #0C3864, chalk lines #D6DDE7.
+  The football: leather #7C3E1E, shaded #582A14, highlight #9E582E. Brown appears on the
+  ball only, never on type, rules or grounds.
 
 TYPE RAMP
 ---------
@@ -54,26 +55,33 @@ GRID
 
 THE EMBLEM
 ----------
-  A pixel baseball: white ball with a chalk-shaded lower right, two red seams that curve
-  toward the middle, stitched with chevrons, then a red keyline and a navy keyline.
-  ball_sprite() in pixel_kit draws it at any size (32 for logos and icons, 48 for headers,
-  100 for the seal); the small 14 x 14 ball is drawn by hand for 64 px and below.
+  A pixel football at 45 degrees, nose up-right: a pointed leather lens with a shaded
+  underside and a light top edge, white laces on the pixel diagonals, then a red keyline and
+  a navy keyline. ball_body()/ball_sprite() in pixel_kit draw it at any size (32 for logos and
+  icons, 48 for headers, 100 for the seal); the small 14 x 14 football is hand-tuned for 64 px
+  and below, with a solid seam instead of stitches so it reads at Discord sizes.
   It is an original mark: never replace it with a letter, a team mark or a team logo.
 
-THE DRAG TRACTOR
-----------------
-  The league's mascot machine: a 56 x 28 pixel grounds-crew utility cart that drives to the
-  right and drags a steel mat behind it, smoothing the infield clay. The short name is painted
-  on its white body in 3 x 5 letters (up to six letters fit). Two frames (wheels straight, then
-  the body bobbed up 1 pixel) for animation. Used on the title screen (invite splash), the
-  league site's field, the print cover and the video outro.
+THE FIELD STRIPER
+-----------------
+  The league's mascot machine: a 56 x 28 pixel grounds cart that drives to the right with a
+  paint nozzle behind it, laying a fresh white sideline (the line ahead of it is faded
+  chalk). The short name is painted on its white body in 3 x 5 letters. Two frames (wheels
+  straight, then the body bobbed up 1 pixel) for animation. Used on the title screen (invite
+  splash), the league site's field, the print cover and the video outro.
 
-BALLPARK SCENES
----------------
-  Banners: navy with red rails top and bottom, bleachers (navy seats, a few red and white
-  fans) fading into navy, a dithered fade to deep navy. Title screen: a padded navy outfield
-  wall with a red rail, the outfield mown in diagonal navy stripes, then the infield clay with
-  the drag tractor. No real ballpark landmarks.
+STADIUM SCENES
+--------------
+  Banners: navy with red rails top and bottom, the stands (navy seats, a few red and white
+  fans) fading into navy, a dithered fade to deep navy. Goalposts (silver) flank the event
+  cover. Title screen: a padded navy stadium wall with a red rail, the field mown in navy
+  stripes with chalk yard lines every ten yards and hash marks, and the striper painting the
+  sideline. No real stadium landmarks.
+
+TAGLINE
+-------
+  "No flags. No mercy." (brand/identity.json, "tagline"). Set in Silkscreen caps, silver,
+  under the lockup on the title screen. Never inside the lockup itself.
 
 SOUND
 -----
@@ -85,11 +93,11 @@ LOGOS
   Wordmark lockup: the short name (white letters, red then navy keyline), then the league
   name, then EST. year between two red rules.
   On light grounds: navy letters with a white (or off-white) keyline then red.
-  Emblem: the pixel baseball (white, red, navy).
+  Emblem: the pixel football (leather, white laces, red and navy keylines).
 
   Clear space: keep empty space of at least one quarter of the letter height on every side
   of the lockup, and one quarter of the ball's width around the ball.
-  Minimum size: lockup 192 px wide (lockup unit 1); emblem 16 px (small ball).
+  Minimum size: lockup 192 px wide (lockup unit 1); emblem 16 px (small football).
 
 DO
 --
@@ -104,10 +112,10 @@ DON'T
 -----
   Don't smooth, blur, anti-alias, rotate or stretch pixel art (the seal ring text is the
   only rotated text, re-thresholded to solid pixels).
-  Don't use any MLB or club logo, wordmark, mascot, letter mark, uniform lettering or
-  ballpark landmark. Colors are the league's own; marks are not borrowed.
+  Don't use any NFL or club logo, wordmark, mascot, helmet design, letter mark, uniform
+  lettering or stadium landmark (no Patriots logo or helmet art). Colors are the league's own; marks are not borrowed.
   Don't put team colors on league marks, banners, headers, dividers or stamps. Team
   colors appear only on small jersey or stripe elements (a team chip, a jersey stripe).
   Don't recolour the emblem or the short name, or swap in non-pixel fonts.
-  Don't mix the small 14 x 14 ball and the large ball in one graphic.
+  Don't mix the small 14 x 14 football and the large football in one graphic.
   Don't use status green anywhere except stamps (and the money and chart emoji).

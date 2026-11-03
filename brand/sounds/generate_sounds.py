@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Generate the PSBL Discord soundboard sounds as original 8-bit chiptune.
+"""Generate the STFL Discord soundboard sounds as original 8-bit chiptune.
 
 Every sound is synthesised from scratch with the same NES-style voices the league's
 arcade brand uses: pulse waves with duty-cycle control, a 4-bit stepped triangle, a
 15-bit LFSR noise channel (long and short "metallic" modes) and an 8-bit output
 crush. No samples, recordings or downloaded audio are used, so the output is
-original PSBL material.
+original STFL material.
 
 Usage:  python3 generate_sounds.py [out_dir] [--preview PATH.mp3]
 Needs:  numpy, and ffmpeg built with libmp3lame (for MP3 output and loudness).
@@ -266,11 +266,11 @@ def final_buzzer():
 
 
 SOUNDS = [
-    ("psbl-gavel", "PSBL Gavel", gavel),
-    ("psbl-draft-horn", "PSBL Draft Horn", draft_horn),
-    ("psbl-on-the-clock", "PSBL On The Clock", on_the_clock),
-    ("psbl-trade-alert", "PSBL Trade Alert", trade_alert),
-    ("psbl-final-buzzer", "PSBL Final Buzzer", final_buzzer),
+    ("stfl-gavel", "STFL Gavel", gavel),
+    ("stfl-draft-horn", "STFL Draft Horn", draft_horn),
+    ("stfl-on-the-clock", "STFL On The Clock", on_the_clock),
+    ("stfl-trade-alert", "STFL Trade Alert", trade_alert),
+    ("stfl-final-buzzer", "STFL Final Buzzer", final_buzzer),
 ]
 
 
@@ -305,8 +305,8 @@ def encode_mp3(wav, path, title, measured):
                 "-ar", str(SR), "-ac", "1",
                 "-c:a", "libmp3lame", "-b:a", MP3_BITRATE, "-id3v2_version", "3",
                 "-metadata", f"title={title}",
-                "-metadata", "artist=PSBL",
-                "-metadata", "comment=Original 8-bit sound synthesized from scratch and owned by the PSBL",
+                "-metadata", "artist=STFL",
+                "-metadata", "comment=Original 8-bit sound synthesized from scratch and owned by the STFL",
                 path]).stderr
     return json.loads(err[err.rfind("{"):err.rfind("}") + 1])
 
@@ -380,7 +380,7 @@ def write_preview(out_dir, preview_path, gap=0.6):
         wav = os.path.join(tmp, "preview.wav")
         write_wav(wav, y)
         _run(["ffmpeg", "-y", "-hide_banner", "-nostats", "-i", wav, "-c:a", "libmp3lame", "-b:a", MP3_BITRATE,
-              "-metadata", "title=PSBL Soundboard (8-bit) preview", "-metadata", "artist=PSBL", preview_path])
+              "-metadata", "title=STFL Soundboard (8-bit) preview", "-metadata", "artist=STFL", preview_path])
 
 
 def main():

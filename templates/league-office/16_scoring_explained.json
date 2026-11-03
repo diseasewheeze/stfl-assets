@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-generic-header-1600x420.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-generic-header-1600x420.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "HOW PSBL SCORING WORKS",
-      "description": "PSBL scoring prices every play at what it's worth in runs, using the linear weights FanGraphs publishes, at 10 points per run. A hitter earns the run value of what he does, and the pitcher pays the same price from the other side. The values match FanGraphs' figures for every season from 2021 to 2026, and the reasons are below.",
+      "title": "HOW STFL SCORING WORKS",
+      "description": "STFL scoring prices every play at what it's worth in runs, using the linear weights FanGraphs publishes, at 10 points per run. A hitter earns the run value of what he does, and the pitcher pays the same price from the other side. The values match FanGraphs' figures for every season from 2021 to 2026, and the reasons are below.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL LEAGUE OFFICE"
+        "text": "STFL LEAGUE OFFICE"
       },
       "fields": [
         {
@@ -59,7 +59,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

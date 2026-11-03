@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PSBL Morning Recap: last night's MLB games in 📸│media, every morning.
+"""STFL Morning Recap: last night's MLB games in 📸│media, every morning.
 
 The scheduler starts this once a day (08:30 ET, all year). For the previous
 day's MLB games it posts, once:
@@ -8,8 +8,8 @@ day's MLB games it posts, once:
      games called early and doubleheader games marked) with the winning,
      losing and saving pitchers and links to the MLB.com recap and condensed
      game; postponed games are listed at the end.
-  2. THE PSBL HOME RUN REEL (only when a player on a PSBL roster homered): one
-     field per PSBL franchise listing its players' home runs, each with a link
+  2. THE STFL HOME RUN REEL (only when a player on a STFL roster homered): one
+     field per STFL franchise listing its players' home runs, each with a link
      to the MLB.com clip when MLB's game content has one.
 
 Days without a final regular-season or postseason game post nothing. Links
@@ -23,7 +23,7 @@ Data (all read-only):
     recap story, the condensed game and per-play clips; a home-run clip names
     its batter by MLB id. Content that cannot be read only drops that game's
     links.
-  - Fantrax getTeamRosters + getPlayerIds for PSBL ownership, matched with the
+  - Fantrax getTeamRosters + getPlayerIds for STFL ownership, matched with the
     Wire's roster matching (wire/roster.py): name, narrowed by MLB club; a
     name that could be two players is skipped.
 
@@ -69,7 +69,7 @@ DEFAULT_POST_TIME = "08:30"
 KEEP_DATES = 60
 
 # The 📸│media channel's existing identity (the Wire's podcast posts).
-USERNAME = "PSBL News Wire"
+USERNAME = "STFL News Wire"
 FOOTER = "MORNING RECAP"
 SCORE_SOURCE = "MLB DATA"
 REEL_SOURCE = "MLB AND FANTRAX DATA"
@@ -121,7 +121,7 @@ def read_media(games: list[mlb.Game], get: Callable[[str], Any]) -> dict[int, ml
     return media
 
 
-# --- PSBL rosters and the Home Run Reel -------------------------------------------
+# --- STFL rosters and the Home Run Reel -------------------------------------------
 
 @dataclass
 class ReelLine:
@@ -159,7 +159,7 @@ class RosterReadError(RuntimeError):
 
 
 def load_index(fx: Any) -> roster.RosterIndex | None:
-    """PSBL roster index, or None when nobody is rostered.
+    """STFL roster index, or None when nobody is rostered.
 
     Raises RosterReadError when Fantrax cannot be read, so a failed read is
     never mistaken for empty rosters and the reel can be retried.
@@ -172,7 +172,7 @@ def load_index(fx: Any) -> roster.RosterIndex | None:
     if not isinstance(block, dict):
         raise RosterReadError("Fantrax roster response has no rosters")
     if not any((team or {}).get("rosterItems") for team in block.values() if isinstance(team, dict)):
-        print("HOME RUN REEL: no players on PSBL rosters yet; reel skipped")
+        print("HOME RUN REEL: no players on STFL rosters yet; reel skipped")
         return None
     try:
         players = fx.player_ids()
@@ -401,8 +401,8 @@ def reel_messages(look: Look, reel: Reel, now: datetime) -> list[dict[str, Any]]
     ordered = sorted(reel.franchises.values(), key=lambda f: (-f.homers, f.name.lower()))
     fields = [{"name": clip_text(_escape(f.name), 256), "value": franchise_value(f), "inline": False}
               for f in ordered]
-    title = look.title("THE PSBL HOME RUN REEL")
-    description = (f"{look.header}\n*Home runs last night by players on PSBL rosters. "
+    title = look.title("THE STFL HOME RUN REEL")
+    description = (f"{look.header}\n*Home runs last night by players on STFL rosters. "
                    "▶ opens the clip on MLB.com.*")
     footer = f"{FOOTER} • {REEL_SOURCE}"
     reserve = len(title) + len(" (continued)") + len(footer)
@@ -447,7 +447,7 @@ def run(
     day = night or (local.date() - timedelta(days=1))
     secret = str(settings.get("webhook") or DEFAULT_WEBHOOK)
     get = get or mlb.http_get_json
-    print(f"PSBL MORNING RECAP mode={mode.upper()} mlb_date={day} local_time={local:%Y-%m-%d %H:%M}")
+    print(f"STFL MORNING RECAP mode={mode.upper()} mlb_date={day} local_time={local:%Y-%m-%d %H:%M}")
 
     if mode == "live":
         if not settings.get("enabled", True):
@@ -477,7 +477,7 @@ def run(
     print(f"MLB CONTENT recaps={sum(1 for m in media.values() if m.recap)} "
           f"condensed={sum(1 for m in media.values() if m.condensed)} clips={sum(len(m.clips) for m in media.values())}")
 
-    fx = fx or Fantrax(str(cfg["league_id"]), user_agent="PSBL-Morning-Recap/1.0", timeout=20)
+    fx = fx or Fantrax(str(cfg["league_id"]), user_agent="STFL-Morning-Recap/1.0", timeout=20)
     index = None
     reel_error = ""  # Fantrax could not be read: the reel is retried, not skipped
     if settings.get("include_home_run_reel", True):

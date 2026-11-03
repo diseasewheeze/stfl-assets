@@ -1,16 +1,16 @@
-# PSBL Soundboard Sounds
+# STFL Soundboard Sounds
 
-These are original 8-bit chiptune sounds synthesized from scratch in Python (no samples, recordings or downloaded audio), and the PSBL owns them. They use the same console-style voices as the league's arcade brand: pulse waves with duty-cycle control, a 4-bit stepped triangle, a 15-bit LFSR noise channel and an 8-bit output crush.
+These are original 8-bit chiptune sounds synthesized from scratch in Python (no samples, recordings or downloaded audio), and the STFL owns them. They use the same console-style voices as the league's arcade brand: pulse waves with duty-cycle control, a 4-bit stepped triangle, a 15-bit LFSR noise channel and an 8-bit output crush.
 
 All files are MP3, mono, 44.1 kHz, 192 kbps, loudness-matched to about -14 LUFS integrated with a true peak under -1 dBTP, so they all sound about the same volume. All of them fit Discord's soundboard limits (MP3/OGG, under 512 KB, 5.2 s max).
 
 | File | Length | Size | Suggested name | Emoji | Starting volume |
 |---|---|---|---|---|---|
-| `psbl-gavel.mp3` | 1.2 s | 30 KB | PSBL Gavel | ⚖️ | 80% |
-| `psbl-draft-horn.mp3` | 3.0 s | 72 KB | PSBL Draft Horn | 📯 | 80% |
-| `psbl-on-the-clock.mp3` | 3.0 s | 72 KB | PSBL On The Clock | ⏰ | 80% |
-| `psbl-trade-alert.mp3` | 1.5 s | 37 KB | PSBL Trade Alert | 🤝🏻 | 80% |
-| `psbl-final-buzzer.mp3` | 2.5 s | 60 KB | PSBL Final Buzzer | 🏁 | 80% |
+| `stfl-gavel.mp3` | 1.2 s | 30 KB | STFL Gavel | ⚖️ | 80% |
+| `stfl-draft-horn.mp3` | 3.0 s | 72 KB | STFL Draft Horn | 📯 | 80% |
+| `stfl-on-the-clock.mp3` | 3.0 s | 72 KB | STFL On The Clock | ⏰ | 80% |
+| `stfl-trade-alert.mp3` | 1.5 s | 37 KB | STFL Trade Alert | 🤝🏻 | 80% |
+| `stfl-final-buzzer.mp3` | 2.5 s | 60 KB | STFL Final Buzzer | 🏁 | 80% |
 
 The sounds are already loudness-matched, so one starting volume works for all of them. Adjust to taste.
 
@@ -57,8 +57,8 @@ It prints a JSON check for each file (duration, size, sample rate, integrated lo
 
 | Sound | Emoji file | Emoji name |
 | --- | --- | --- |
-| psbl-gavel | `psbl_gavel.png` | `psbl_gavel` |
-| psbl-draft-horn | `psbl_drafthorn.png` | `psbl_drafthorn` |
-| psbl-on-the-clock | `psbl_onclock.png` | `psbl_onclock` |
-| psbl-trade-alert | `psbl_trade.png` | `psbl_trade` |
-| psbl-final-buzzer | `psbl_buzzer.png` | `psbl_buzzer` |
+| stfl-gavel | `stfl_gavel.png` | `stfl_gavel` |
+| stfl-draft-horn | `stfl_drafthorn.png` | `stfl_drafthorn` |
+| stfl-on-the-clock | `stfl_onclock.png` | `stfl_onclock` |
+| stfl-trade-alert | `stfl_trade.png` | `stfl_trade` |
+| stfl-final-buzzer | `stfl_buzzer.png` | `stfl_buzzer` |

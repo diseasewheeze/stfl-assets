@@ -15,8 +15,8 @@ var DATA = {
     seconds: 5
 };
 
-PSBL.run("09 Countdown", function () {
-    var B = PSBL, D = DATA;
+STFL.run("09 Countdown", function () {
+    var B = STFL, D = DATA;
     var c = B.comp(B.folder("Countdowns"), "Countdown - " + D.event, 8);
     B.background(c, "arena");
 

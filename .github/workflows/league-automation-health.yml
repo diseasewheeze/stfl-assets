@@ -1,8 +1,8 @@
-name: PSBL Automation Health
-run-name: PSBL Automation Health — ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}
+name: STFL Automation Health
+run-name: STFL Automation Health — ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}
 
 on:
-  # Timing lives in automation/scheduler/schedule.yaml; the PSBL Scheduler
+  # Timing lives in automation/scheduler/schedule.yaml; the STFL Scheduler
   # starts this workflow with mode=live when it is due.
   workflow_dispatch:
     inputs:
@@ -18,7 +18,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: psbl-automation-health
+  group: stfl-automation-health
   cancel-in-progress: false
 
 jobs:
@@ -64,5 +64,5 @@ jobs:
         run: |
           bash automation/tools/state_branch.sh save \
             "chore(automation-health): save issue state" \
-            "PSBL Systems Automation" \
+            "STFL Systems Automation" \
             "automation/health/state/health.json"

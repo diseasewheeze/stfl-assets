@@ -1,5 +1,5 @@
-name: PSBL Season Rollover
-run-name: PSBL Season Rollover — ${{ inputs.mode }}
+name: STFL Season Rollover
+run-name: STFL Season Rollover — ${{ inputs.mode }}
 
 # Manual only. check reads a new Fantrax league and reports what is right,
 # wrong or still to do (changes nothing). reset-state clears the previous
@@ -25,7 +25,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: psbl-season-rollover
+  group: stfl-season-rollover
   cancel-in-progress: false
 
 jobs:

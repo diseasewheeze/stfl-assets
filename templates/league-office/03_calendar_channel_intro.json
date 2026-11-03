@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/league-office/psbl-calendar-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-calendar-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL LEAGUE CALENDAR",
-      "description": "Official dates and deadlines for the current PSBL season.",
+      "title": "STFL LEAGUE CALENDAR",
+      "description": "Official dates and deadlines for the current STFL season.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL LEAGUE CALENDAR"
+        "text": "STFL LEAGUE CALENDAR"
       },
       "fields": [
         {
@@ -74,7 +74,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

@@ -71,7 +71,7 @@ BASE = "https://statsapi.mlb.com/api/v1"
 SCHEDULE_URL = BASE + "/schedule"
 CONTENT_URL = BASE + "/game/{game_pk}/content"
 MLB_SITE = "https://www.mlb.com"
-USER_AGENT = "PSBL-Automation/2.0 (+https://github.com/diseasewheeze/psbl-assets)"
+USER_AGENT = "STFL-Automation/2.0 (+https://github.com/diseasewheeze/stfl-assets)"
 
 # Schedule hydrations.
 PROBABLES = "probablePitcher"

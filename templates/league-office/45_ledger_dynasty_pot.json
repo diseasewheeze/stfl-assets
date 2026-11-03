@@ -5,7 +5,7 @@
       "description": "The pot stands at **`$[BALANCE]`**.",
       "color": 795456,
       "footer": {
-        "text": "PSBL LEAGUE LEDGER"
+        "text": "STFL LEAGUE LEDGER"
       },
       "fields": [
         {
@@ -25,12 +25,12 @@
         },
         {
           "name": "TO WIN",
-          "value": "Three PSBL Championships in the same active cycle (Article IV).",
+          "value": "Three STFL Championships in the same active cycle (Article IV).",
           "inline": false
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

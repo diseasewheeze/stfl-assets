@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/waiver-wire/psbl-waiver-wire-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/waiver-wire/stfl-waiver-wire-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL WAIVER TALK",
+      "title": "STFL WAIVER TALK",
       "description": "FAAB strategy, waiver timing and recently dropped players worth a claim.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL WAIVER WIRE"
+        "text": "STFL WAIVER WIRE"
       },
       "fields": [
         {
@@ -39,7 +39,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

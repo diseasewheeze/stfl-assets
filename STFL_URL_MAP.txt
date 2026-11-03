@@ -1,0 +1,34 @@
+STFL RAW ASSET URLS
+
+Welcome banner:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/welcome/stfl-welcome-banner.png
+
+Footer divider:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png
+
+Generic header:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-generic-header-1600x420.png
+
+Banner wordmark:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-banner-wordmark.png
+
+Hosting preview:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/STFL_Phase_2C6_Hosting_Preview.png
+
+Constitution:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-constitution-header.png
+
+Announcements:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-announcements-header.png
+
+Calendar:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-calendar-header.png
+
+Ledger:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-ledger-header.png
+
+Voting:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-office/stfl-voting-header.png
+
+Draft Center:
+https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/draft-center/stfl-draft-center-header.png

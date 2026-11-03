@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PSBL The Wire: routing, dedupe, roster tags and Discord delivery.
+"""STFL The Wire: routing, dedupe, roster tags and Discord delivery.
 
 Architecture:
   GitHub Actions = brain
@@ -114,8 +114,8 @@ CHANNEL_COLORS = {
 }
 
 WEBHOOK_AVATAR = (
-    "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/"
-    "discord/webhooks/avatar/psbl-webhook-avatar-512.png?v=8bit-1"
+    "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/"
+    "discord/webhooks/avatar/stfl-webhook-avatar-512.png?v=8bit-1"
 )
 
 
@@ -425,7 +425,7 @@ def primary_skip(candidate: dict) -> bool:
 
 
 def enrich_ownership(candidates: list[dict], config: dict, state: dict) -> None:
-    """Tag new stories with the PSBL team that rosters the player.
+    """Tag new stories with the STFL team that rosters the player.
 
     Only stories that will actually be posted are looked up, so the Fantrax
     player directory is fetched only when there is something new.
@@ -481,7 +481,7 @@ def discord_payload(candidate: dict) -> dict:
 
     description = f"**Source:** {source_line}"
     if candidate.get("fantasy_owner"):
-        label = "PSBL rosters" if len(candidate.get("owners") or []) > 1 else "PSBL roster"
+        label = "STFL rosters" if len(candidate.get("owners") or []) > 1 else "STFL roster"
         description += f"\n**{label}:** {candidate['fantasy_owner']}"
 
     timestamp = published_timestamp(candidate.get("published", ""))
@@ -493,13 +493,13 @@ def discord_payload(candidate: dict) -> dict:
         "url": candidate.get("link", "") or None,
         "description": description[:4096],
         "color": CHANNEL_COLORS.get(channel, DEFAULT_COLOR),
-        "footer": {"text": f"{CHANNEL_LABELS.get(channel, channel)} • PSBL THE WIRE"},
+        "footer": {"text": f"{CHANNEL_LABELS.get(channel, channel)} • STFL THE WIRE"},
     }
     if timestamp:
         embed["timestamp"] = timestamp
 
     return with_mentions({
-        "username": "PSBL News Wire",
+        "username": "STFL News Wire",
         "avatar_url": WEBHOOK_AVATAR,
         "allowed_mentions": {"parse": []},
         "embeds": [embed],
@@ -539,7 +539,7 @@ def digest_payload(channel: str, items: list[dict]) -> tuple[dict, int]:
         line = f"• [{title}]({link})" if link else f"• {title}"
         line += f" — {item['source_name']}"
         if item.get("fantasy_owner"):
-            label = "PSBL rosters" if len(item.get("owners") or []) > 1 else "PSBL roster"
+            label = "STFL rosters" if len(item.get("owners") or []) > 1 else "STFL roster"
             line += f" · **{label}:** {item['fantasy_owner']}"
         # Reserve room for the "+N more" note.
         if used + len(line) + 1 > DIGEST_MAX_CHARS - 60:
@@ -557,11 +557,11 @@ def digest_payload(channel: str, items: list[dict]) -> tuple[dict, int]:
         "title": f"{heading} — {count} more {noun}",
         "description": description[:4096],
         "color": CHANNEL_COLORS.get(channel, DEFAULT_COLOR),
-        "footer": {"text": f"{CHANNEL_LABELS.get(channel, channel)} • PSBL THE WIRE • ROUNDUP"},
+        "footer": {"text": f"{CHANNEL_LABELS.get(channel, channel)} • STFL THE WIRE • ROUNDUP"},
         "timestamp": now_utc().isoformat(),
     }
     payload = {
-        "username": "PSBL News Wire",
+        "username": "STFL News Wire",
         "avatar_url": WEBHOOK_AVATAR,
         "allowed_mentions": {"parse": []},
         "embeds": [embed],
@@ -655,7 +655,7 @@ def main() -> int:
     candidates = fetch_candidates(cfg, include_discovery=args.include_discovery)
     enrich_ownership(candidates, cfg, state)
     print(
-        f"PSBL THE WIRE — mode={args.mode.upper()} candidates={len(candidates)} "
+        f"STFL THE WIRE — mode={args.mode.upper()} candidates={len(candidates)} "
         f"include_discovery={args.include_discovery}"
     )
 
@@ -708,7 +708,7 @@ def process_candidates(candidates: list[dict], state: dict, mode: str) -> dict[s
     posted_by_channel: dict[str, int] = {}
     overflow: dict[str, list[tuple[dict, dict]]] = {}
 
-    # Stories about players on PSBL rosters get the individual posts first;
+    # Stories about players on STFL rosters get the individual posts first;
     # everything else keeps its source-priority order (the sort is stable).
     candidates = sorted(candidates, key=lambda c: 0 if c.get("owners") else 1)
 
@@ -727,12 +727,12 @@ def process_candidates(candidates: list[dict], state: dict, mode: str) -> dict[s
             continue
 
         if candidate.get("only_if_rostered") and not candidate.get("owners"):
-            remember(candidate, state)  # a minor-league deal or draft-pick signing for nobody on a PSBL roster
+            remember(candidate, state)  # a minor-league deal or draft-pick signing for nobody on a STFL roster
             counts["unrostered_skipped"] += 1
             continue
 
         if mode == "shadow":
-            owner_note = f" [PSBL roster: {candidate['fantasy_owner']}]" if candidate.get("fantasy_owner") else ""
+            owner_note = f" [STFL roster: {candidate['fantasy_owner']}]" if candidate.get("fantasy_owner") else ""
             print(f"SHADOW {prefix}: {candidate['title']}{owner_note}")
             remember(candidate, state)
             counts["shadowed"] += 1

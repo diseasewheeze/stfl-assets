@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the league hype intro: brand/video/b-roll/PSBL_Hype_Intro.mp4.
+"""Build the league hype intro: brand/video/b-roll/STFL_Hype_Intro.mp4.
 
     python3 tools/build_hype_intro.py                        # render and encode the clip (a few minutes)
     python3 tools/build_hype_intro.py --stills DIR 2 6.5 12  # PNG frames at those times, for checking
@@ -17,7 +17,7 @@ source times, so every scene keeps to its window (quoted names are the trailer's
    4.0 -  9.4  "Ballpark and crowd": the lights come up, the drag tractor crosses the infield
                ("Empty ballpark" and "Ballpark lights up" use 4.0 - 9.0)
    9.4 -  9.6  pixel wipe (in no cut)
-   9.6 - 15.2  "PSBL logo"
+   9.6 - 15.2  "STFL logo"
   15.2 - 24.0  dynasty: the calendar flips 2027, 2028, 2029
   24.0 - 32.8  "18 active, 15 minors": daily lineups, the slots fill in
   32.8 - 40.0  22 weeks
@@ -53,7 +53,7 @@ from pixel_kit import (BLUE, CHALK, CLAY, CLAY_DK, CLAY_LT, MUTED, NAVY, NAVY_DK
                        RED, RED_DK, RED_LT, STANDS, STEEL, STEEL_DK, TURF, TURF_LT, WHITE, art, dither, rect)
 
 ROOT = HERE.parent
-OUT = ROOT / "brand" / "video" / "b-roll" / "PSBL_Hype_Intro.mp4"
+OUT = ROOT / "brand" / "video" / "b-roll" / "STFL_Hype_Intro.mp4"
 W, H, FPS = 1920, 1080, 30
 SECONDS = 75.2
 FRAMES = round(SECONDS * FPS)          # 2256
@@ -887,7 +887,7 @@ def pennant(style: int, coin_lit: bool = True) -> Image.Image:
              1: ((f"{SHORT} CHAMPIONS",), "YOUR NAME", "2027"),
              2: ((f"{SHORT} CHAMPIONS",), "INSERT COIN", "2028")}[style]
     heads, name, year = lines
-    if len(heads) == 1:                         # split "PSBL CHAMPIONS" over two lines
+    if len(heads) == 1:                         # split "STFL CHAMPIONS" over two lines
         heads = tuple(heads[0].split(" ", 1))
     for j, s in enumerate(heads):
         text(img, s, "silk-bold", 4, PEN_W // 2, 64 + j * 40, ink)
@@ -1028,7 +1028,7 @@ SCENES = [
     (0.0, 4.0, "Title screen", title),
     (4.0, 9.4, "Ballpark and crowd", ballpark),
     (9.4, 9.6, "Wipe", to_logo),
-    (9.6, 15.2, "PSBL logo", logo),
+    (9.6, 15.2, "STFL logo", logo),
     (15.2, 24.0, "Dynasty", dynasty),
     (24.0, 32.8, "Daily lineups (18 active, 15 minors)", lineups),
     (32.8, 40.0, "22 weeks", weeks),

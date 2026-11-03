@@ -1,16 +1,16 @@
-// PSBL Video Kit: the shared helpers behind every script in this folder.
+// STFL Video Kit: the shared helpers behind every script in this folder.
 // You never need to edit this file. Each numbered script includes it, builds its compositions
-// from the DATA block at its top, and puts them in the project's "PSBL Video Kit" folder.
+// from the DATA block at its top, and puts them in the project's "STFL Video Kit" folder.
 //
 // Plain ES3 JavaScript and the After Effects scripting model, so the same scripts also run in
 // After Effects. Fonts are named by their PostScript names, which both apps understand.
 
-var PSBL = (function () {
+var STFL = (function () {
     var B = {};
     B.W = 1920;
     B.H = 1080;
     B.FPS = 30;
-    B.KIT = "PSBL Video Kit";
+    B.KIT = "STFL Video Kit";
     B.built = [];
 
     // ------------------------------------------------------------ brand
@@ -458,7 +458,7 @@ var PSBL = (function () {
 
     // The little sign-off line along the bottom.
     B.signoff = function (comp, text) {
-        return B.text(comp, text || "PITCH SLAPPED BASEBALL LEAGUE \u2022 EST. 2026", { face: "silk", k: 4, color: "muted", x: 120, y: 980 });
+        return B.text(comp, text || "SACK TAP FOOTBALL LEAGUE \u2022 EST. 2026", { face: "silk", k: 4, color: "muted", x: 120, y: 980 });
     };
 
     // A full-width band for a list row: label on the left, value on the right.

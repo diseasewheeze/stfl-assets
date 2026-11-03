@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/trade-center/psbl-trade-center-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/trade-center/stfl-trade-center-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL PLAYER VALUES",
+      "title": "STFL PLAYER VALUES",
       "description": "Dynasty values, rankings and trade-value discussion.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL TRADE CENTER"
+        "text": "STFL TRADE CENTER"
       },
       "fields": [
         {
@@ -29,7 +29,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

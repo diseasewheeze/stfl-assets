@@ -6,20 +6,20 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/league-competition/psbl-competition-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/league-competition/stfl-competition-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL PLAYOFFS",
-      "description": "Playoff matchups and results, posted by the PSBL Competition Desk.",
+      "title": "STFL PLAYOFFS",
+      "description": "Playoff matchups and results, posted by the STFL Competition Desk.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL COMPETITION DESK"
+        "text": "STFL COMPETITION DESK"
       },
       "fields": [
         {
           "name": "THE FORMAT",
-          "value": "Quarterfinals and Semifinals are one week each, and the PSBL Championship is a two-week cumulative matchup. Brackets reseed after each round. The Semifinal losers play for third place (Article XVI).",
+          "value": "Quarterfinals and Semifinals are one week each, and the STFL Championship is a two-week cumulative matchup. Brackets reseed after each round. The Semifinal losers play for third place (Article XVI).",
           "inline": false
         },
         {
@@ -39,7 +39,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

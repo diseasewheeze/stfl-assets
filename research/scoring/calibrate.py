@@ -1,4 +1,4 @@
-"""Score every 2021-2026 MLB player under the PSBL run-value system and calibrate the pitching dials.
+"""Score every 2021-2026 MLB player under the STFL run-value system and calibrate the pitching dials.
 
 Fill a 12-team league's lineup (C, 1B, 2B, 3B, SS, 3 OF, 2 UTIL, 5 SP, 3 RP) with the best players by points,
 then measure how value above replacement splits between hitters, starters and relievers."""

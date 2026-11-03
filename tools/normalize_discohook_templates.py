@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize and verify every PSBL Discohook template (templates/**/*.json).
+"""Normalize and verify every STFL Discohook template (templates/**/*.json).
 
 Each template is one Discord message. The rules live in discohook_format.py:
 - One message per send: the header banner embed (if the channel has one) plus

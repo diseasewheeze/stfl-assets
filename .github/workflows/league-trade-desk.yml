@@ -1,11 +1,11 @@
-name: PSBL Trade Desk
-run-name: PSBL Trade Desk — ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}
+name: STFL Trade Desk
+run-name: STFL Trade Desk — ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}
 
 # A report card with a "Who won the trade?" poll in 💬│trade-discussion for
 # every trade Fantrax processes, revisits 6 and 12 months later, and the
-# PSBL Deadline Day Trade Center tracker in 📢│announcements.
+# STFL Deadline Day Trade Center tracker in 📢│announcements.
 # Timing lives in automation/scheduler/schedule.yaml (every 30 minutes, every
-# 15 on trade-deadline day); the PSBL Scheduler starts this workflow with
+# 15 on trade-deadline day); the STFL Scheduler starts this workflow with
 # mode=live. Code: automation/trades/.
 
 on:
@@ -33,7 +33,7 @@ permissions:
   contents: write   # only to save state to the automation-state branch
 
 concurrency:
-  group: psbl-trade-desk
+  group: stfl-trade-desk
   cancel-in-progress: false
 
 jobs:
@@ -85,5 +85,5 @@ jobs:
         run: |
           bash automation/tools/state_branch.sh save \
             "chore(trades): save trade desk state" \
-            "PSBL Fantrax Automation" \
+            "STFL Fantrax Automation" \
             "automation/trades/state/tradedesk.json"

@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/the-wire/psbl-the-wire-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/the-wire/stfl-the-wire-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL BREAKING NEWS",
+      "title": "STFL BREAKING NEWS",
       "description": "High-impact MLB news that may change a roster decision right now. Stories are posted by automation as a headline, a source name and a direct link. Full articles are never copied; open the link to read the source.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL NEWS DESK"
+        "text": "STFL NEWS DESK"
       },
       "fields": [
         {
@@ -34,7 +34,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

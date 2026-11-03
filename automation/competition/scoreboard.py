@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PSBL live scoreboard: one Discord message per week, edited as scores change.
+"""STFL live scoreboard: one Discord message per week, edited as scores change.
 
 - When a week starts, a new scoreboard message is posted.
 - Each check edits that same message if any score or games-played changed.
@@ -81,7 +81,7 @@ def run(mode: str, week_override: int | None) -> int:
     now = datetime.now(timezone.utc)
     comp = cfg.get("competition") or {}
     secret = str((comp.get("webhooks") or {}).get("scoreboard") or "LEAGUE_WEBHOOK_SCOREBOARD")
-    fx = Fantrax(str(cfg["league_id"]), user_agent="PSBL-Scoreboard/2.0")
+    fx = Fantrax(str(cfg["league_id"]), user_agent="STFL-Scoreboard/2.0")
     info = fx.league_info()
     _, first_playoff, _ = season.playoff_settings(info)
     ctx = render.Context(
@@ -90,7 +90,7 @@ def run(mode: str, week_override: int | None) -> int:
         color=color_value(cfg.get("color")),
         test=(mode == "test"),
     )
-    print(f"PSBL SCOREBOARD mode={mode.upper()} season={season.describe(info, now)}")
+    print(f"STFL SCOREBOARD mode={mode.upper()} season={season.describe(info, now)}")
 
     def payload_for(week: int, final: bool) -> tuple[dict, str]:
         p = season.period(info, week)

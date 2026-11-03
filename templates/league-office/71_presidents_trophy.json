@@ -5,7 +5,7 @@
       "description": "🥇 **`[FRANCHISE]`** finishes with the best regular-season record.",
       "color": 795456,
       "footer": {
-        "text": "PSBL RECORDS DEPARTMENT"
+        "text": "STFL RECORDS DEPARTMENT"
       },
       "fields": [
         {
@@ -25,7 +25,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

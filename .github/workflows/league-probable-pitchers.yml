@@ -1,5 +1,5 @@
-name: PSBL Probable Pitchers
-run-name: PSBL Probable Pitchers — ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}
+name: STFL Probable Pitchers
+run-name: STFL Probable Pitchers — ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'live' }}
 
 # One "Probable Pitchers" message per game day in ⚾│game-day, edited silently
 # when MLB changes an announced starter, until the last game starts. Timing
@@ -20,7 +20,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: psbl-probable-pitchers
+  group: stfl-probable-pitchers
   cancel-in-progress: false
 
 jobs:
@@ -58,5 +58,5 @@ jobs:
         run: |
           bash automation/tools/state_branch.sh save \
             "chore(pitchers): save probable pitchers state" \
-            "PSBL Fantrax Automation" \
+            "STFL Fantrax Automation" \
             "automation/pitchers/state/probable_pitchers.json"

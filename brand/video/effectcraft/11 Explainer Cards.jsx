@@ -16,7 +16,7 @@
 //   card   a header and up to six lines; "big" adds a large number on the right
 //   tiles  a header and up to three big numbers with captions
 //   big    one huge centered line and a sub line (the hype-video look)
-//   end    the PSBL wordmark with a line and a sub line
+//   end    the STFL wordmark with a line and a sub line
 
 #include "lib/league.jsxinc"
 
@@ -46,13 +46,13 @@ var DATA = {
                 { at: 20, kind: "card", eyebrow: "PITCHERS", title: "EVERY VALUE", lines: ["EACH OUT  +2.00 (AN INNING  +6.00)", "STRIKEOUT  +2.00", "HIT ALLOWED  -2.60", "HOME RUN  -11.40 MORE (-14.00 IN ALL)", "WALK  -3.10 • HIT BATTER  -3.30", "SAVE  +6.00 • HOLD  +4.00"] },
                 { at: 35, kind: "tiles", eyebrow: "WHAT A NIGHT LOOKS LIKE", title: "THREE NIGHTS", tiles: [["+16.60", "HOMER AND A SINGLE IN 4 AT-BATS"], ["+19.40", "6 IP, 5 H, A HOMER, 2 BB, 7 K"], ["-27.80", "3 IP, 8 H, 2 HOMERS, 2 BB, 2 K"]] },
                 { at: 50, kind: "card", eyebrow: "NOT SCORED", title: "NO POINTS FOR", lines: ["RUNS OR RBI", "WINS, LOSSES OR EARNED RUNS", "QUALITY STARTS OR SHUTOUTS", "BLOWN SAVES OR BONUSES", "EVERY PLAY IS PRICED IN RUNS"] },
-                { at: 58, kind: "end", title: "HOW SCORING WORKS", sub: "PITCH SLAPPED BASEBALL LEAGUE" }
+                { at: 58, kind: "end", title: "HOW SCORING WORKS", sub: "SACK TAP FOOTBALL LEAGUE" }
             ]
         },
         {
             name: "Where the Money Goes", length: 45, cards: [
                 { at: 0, kind: "title", eyebrow: "$200 X 12 FRANCHISES", title: "WHERE THE MONEY GOES", sub: "$2,400 A SEASON, EVERY DOLLAR ACCOUNTED FOR" },
-                { at: 8, kind: "card", eyebrow: "PRIZES", title: "WHO GETS PAID", lines: ["PSBL CHAMPION  $850", "RUNNER-UP  $450", "THIRD PLACE  $200", "PRESIDENTS' TROPHY  $250"], big: "$1,750", bigLabel: "IN PRIZES" },
+                { at: 8, kind: "card", eyebrow: "PRIZES", title: "WHO GETS PAID", lines: ["STFL CHAMPION  $850", "RUNNER-UP  $450", "THIRD PLACE  $200", "PRESIDENTS' TROPHY  $250"], big: "$1,750", bigLabel: "IN PRIZES" },
                 { at: 20, kind: "card", eyebrow: "THE LONG GAME", title: "DYNASTY POT", lines: ["$300 GOES IN EVERY SEASON", "FIRST TO 3 TITLES IN A CYCLE TAKES IT ALL"], big: "$300", bigLabel: "A SEASON" },
                 { at: 30, kind: "card", eyebrow: "RUNNING THE LEAGUE", title: "RESERVE AND LEAGUE SERVICES", lines: ["$200: FANTRAX PREMIUM AND LEAGUE BOT HOSTING", "WHAT'S LEFT JOINS THE DYNASTY POT", "$150: THE COMMISSIONER'S ALLOCATION"] },
                 { at: 40, kind: "card", eyebrow: "EVERY DOLLAR", title: "THE LEDGER", lines: ["POSTED AFTER EACH SEASON", "IN THE LEAGUE LEDGER CHANNEL"] }
@@ -77,7 +77,7 @@ var DATA = {
                 { at: 4, kind: "card", eyebrow: "THE BALANCE", title: "IN THE POT", lines: ["$300 GOES IN EVERY SEASON", "PLUS WHAT THE RESERVE DIDN'T SPEND"], big: "$[BALANCE]", bigLabel: "AND GROWING" },
                 { at: 12, kind: "card", eyebrow: "THIS CYCLE", title: "CHAMPIONSHIPS", lines: ["[TEAM]: [NUMBER]", "[TEAM]: [NUMBER]"] },
                 { at: 20, kind: "big", title: "FIRST TO 3 TAKES IT ALL", sub: "THEY DON'T HAVE TO BE IN A ROW" },
-                { at: 27, kind: "end", title: "WHO'S NEXT?", sub: "PITCH SLAPPED BASEBALL LEAGUE" }
+                { at: 27, kind: "end", title: "WHO'S NEXT?", sub: "SACK TAP FOOTBALL LEAGUE" }
             ]
         },
         {
@@ -100,7 +100,7 @@ var DATA = {
         },
         {
             name: "Opening Night Cards", length: 45, alpha: true, cards: [
-                { at: 8, until: 12, kind: "big", title: "WEEK 1", sub: "THE [YEAR] PSBL SEASON" },
+                { at: 8, until: 12, kind: "big", title: "WEEK 1", sub: "THE [YEAR] STFL SEASON" },
                 { at: 12, until: 19, kind: "big", title: "22 WEEKS", sub: "EVERY TEAM TWICE \u2022 THE TOP 6 MAKE THE PLAYOFFS" },
                 { at: 19, until: 25, kind: "big", title: "SET YOUR LINEUP", sub: "PLAYERS LOCK ABOUT A MINUTE BEFORE THEIR GAME" },
                 { at: 25, until: 31, kind: "big", title: "7 PITCHER STARTS \u2022 5 ADDS", sub: "EVERY WEEK" },
@@ -121,7 +121,7 @@ var DATA = {
                 { at: 9, until: 14, kind: "big", title: "[SEED] VS [SEED]", sub: "[RECORD] \u2022 [RECORD]" },
                 { at: 22, until: 29, kind: "big", title: "2 WEEKS \u2022 TOTAL POINTS", sub: "14 PITCHER STARTS AND 10 PICKUPS ACROSS BOTH WEEKS" },
                 { at: 29, until: 37, kind: "big", title: "$850 \u2022 A BANNER", sub: "AND ONE STEP TOWARD THE DYNASTY POT" },
-                { at: 42, until: 45, kind: "end", title: "THE PSBL CHAMPIONSHIP", sub: "STARTS TONIGHT" }
+                { at: 42, until: 45, kind: "end", title: "THE STFL CHAMPIONSHIP", sub: "STARTS TONIGHT" }
             ]
         },
         {
@@ -158,8 +158,8 @@ var DATA = {
     ]
 };
 
-PSBL.run("11 Explainer Cards", function () {
-    var B = PSBL, folder = B.folder("Explainer Cards"), found = false;
+STFL.run("11 Explainer Cards", function () {
+    var B = STFL, folder = B.folder("Explainer Cards"), found = false;
 
     function card(c, cd, t0, t1, ownBg) {
         var all = [];

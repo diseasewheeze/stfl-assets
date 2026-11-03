@@ -6,15 +6,15 @@
         "text": "​"
       },
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/general-managers/psbl-general-managers-header.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/general-managers/stfl-general-managers-header.png?v=8bit-sox-1"
       }
     },
     {
-      "title": "PSBL CHIRPS AND MEMES",
+      "title": "STFL CHIRPS AND MEMES",
       "description": "Friendly trash talk and baseball humor.",
       "color": 12398649,
       "footer": {
-        "text": "PSBL GENERAL MANAGERS"
+        "text": "STFL GENERAL MANAGERS"
       },
       "fields": [
         {
@@ -29,7 +29,7 @@
         }
       ],
       "image": {
-        "url": "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/discord/webhooks/shared/psbl-footer-divider-1600x90.png?v=8bit-sox-1"
+        "url": "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/discord/webhooks/shared/stfl-footer-divider-1600x90.png?v=8bit-sox-1"
       }
     }
   ]

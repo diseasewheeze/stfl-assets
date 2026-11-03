@@ -14,10 +14,10 @@ REPO_ROOT = AUTOMATION_ROOT.parent
 LEAGUE_PATH = AUTOMATION_ROOT / "league.yaml"
 
 AVATAR = (
-    "https://raw.githubusercontent.com/diseasewheeze/psbl-assets/main/"
-    "discord/webhooks/avatar/psbl-webhook-avatar-512.png?v=8bit-1"
+    "https://raw.githubusercontent.com/diseasewheeze/stfl-assets/main/"
+    "discord/webhooks/avatar/stfl-webhook-avatar-512.png?v=8bit-1"
 )
-DEFAULT_LEAGUE_NAME = "Pitch Slapped Baseball League"
+DEFAULT_LEAGUE_NAME = "Sack Tap Football League"
 
 
 def load_league(path: Path = LEAGUE_PATH) -> dict[str, Any]:

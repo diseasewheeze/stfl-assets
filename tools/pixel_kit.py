@@ -1,4 +1,4 @@
-"""PSBL 8-bit pixel-art toolkit, shared by build_discord_assets.py and build_brand_package.py.
+"""STFL 8-bit pixel-art toolkit, shared by build_discord_assets.py and build_brand_package.py.
 
 Every graphic is painted on a small art grid and enlarged with NEAREST, so each
 art pixel is a hard-edged square (banners and headers use an 8 px grid: one art
@@ -7,12 +7,12 @@ pixel = 8 export pixels). Text uses the OFL pixel fonts in brand/fonts
 design pixel, thresholded to 1-bit and enlarged by whole numbers, so letter
 edges stay crisp too.
 
-Palette: navy, red and white (see the palette block below). The league emblem
-is a pixel baseball generated here: ball_sprite() paints a white ball with red
-seams and stitches at any size and wraps it in red and navy keylines; the small
-14 x 14 ball for avatars and emoji is drawn by hand in SPRITES. The ballpark
-scenes (bleachers, outfield wall, mown outfield, infield dirt and the drag
-tractor) replace the old arena and rink.
+Palette: Patriots-aligned navy, red, silver and white (see the palette block below).
+The league emblem is a pixel football generated here: ball_body() paints a leather lens at
+45 degrees with white laces on the pixel diagonals, and ball_sprite() wraps it in red and navy
+keylines; the small 14 x 14 football for avatars and emoji is hand-tuned in SPRITES. The
+stadium scenes (stands, padded wall, the field mown in navy stripes with chalk yard lines, and
+the field striper) replace the old ballpark.
 
 League text comes from brand/identity.json (LEAGUE_NAME, LEAGUE_SHORT,
 LEAGUE_EST): rename the league there and rebuild.
@@ -36,78 +36,65 @@ FONTS = ROOT / "brand" / "fonts"
 # ---------------------------------------------------------------- league identity
 # The league's name lives in brand/identity.json: rename it there, then rebuild.
 IDENTITY = json.loads((ROOT / "brand" / "identity.json").read_text(encoding="utf-8"))
-LEAGUE_NAME = IDENTITY["league_name"]                      # Pitch Slapped Baseball League
-LEAGUE_SHORT = IDENTITY["short_name"]                      # PSBL
+LEAGUE_NAME = IDENTITY["league_name"]                      # Sack Tap Football League
+LEAGUE_SHORT = IDENTITY["short_name"]                      # STFL
 LEAGUE_EST = str(IDENTITY["established"])                  # 2026
+LEAGUE_MOTTO = IDENTITY.get("tagline", "")                 # No flags. No mercy.
 LEAGUE_TAGLINE = f"{LEAGUE_NAME} • Est. {LEAGUE_EST}"
 LEAGUE_LINE = f"{LEAGUE_NAME.upper()} • EST. {LEAGUE_EST}"  # sign-off line on headers and cards
 
 # ---------------------------------------------------------------- palette
-# Navy, red and white. Everything else is a one-step shade of those three or a neutral grey.
-NAVY = (12, 35, 64)         # #0C2340  main ground: banners, headers, embed side color
-NAVY_DK = (7, 21, 40)       # #071528  deep ground, outer keylines, counters
-RED = (189, 48, 57)         # #BD3039  the accent: keylines, rails, rules, bars; red status stamps
-WHITE = (255, 255, 255)     # #FFFFFF  letter fill of PSBL, the ball, titles on navy
+# Patriots-aligned: nautical navy, red, silver and white. Everything else is a one-step shade of those
+# or a neutral grey. The football's leather browns appear on the ball only.
+NAVY = (0, 34, 68)          # #002244  main ground: banners, headers, embed side color
+NAVY_DK = (0, 20, 42)       # #00142A  deep ground, outer keylines, counters
+RED = (198, 12, 48)         # #C60C30  the accent: keylines, rails, rules, bars; red status stamps
+SILVER = (176, 183, 188)    # #B0B7BC  New Century silver: sign-off text, goalposts, steel
+WHITE = (255, 255, 255)     # #FFFFFF  letter fill of STFL, laces, titles on navy
 PAPER = (246, 247, 249)     # #F6F7F9  off-white paper ground
 GREEN = (63, 163, 77)       # #3FA34D  status green: stamps only
 
-# Tones: shades of the palette for grain, dither, bevels, the crowd and the ballpark.
-RED_LT, RED_DK = (217, 84, 92), (142, 31, 39)          # #D9545C small red text on navy / #8E1F27
-NAVY_LT = (22, 50, 90)                                 # #16325A panels, the outfield wall
-NAVY_HI, NAVY_LO = (16, 41, 73), (9, 29, 54)           # grain on navy
-DEEP_HI, DEEP_LO = (11, 27, 49), (4, 14, 28)           # grain on deep navy
-STANDS = (8, 26, 48)                                   # #081A30 the bleachers
-SEAT, SEAT_DK, SEAT_LT = (30, 58, 98), (22, 46, 80), (42, 74, 120)
+# Tones: shades of the palette for grain, dither, bevels, the crowd and the stadium.
+RED_LT, RED_DK = (230, 72, 98), (140, 8, 34)           # #E64862 small red text on navy / #8C0822
+NAVY_LT = (14, 54, 98)                                 # #0E3662 panels, the stadium wall
+NAVY_HI, NAVY_LO = (6, 42, 80), (0, 27, 56)            # grain on navy
+DEEP_HI, DEEP_LO = (3, 28, 54), (0, 12, 28)            # grain on deep navy
+STANDS = (2, 25, 50)                                   # #021932 the stands
+SEAT, SEAT_DK, SEAT_LT = (22, 58, 102), (14, 46, 84), (34, 74, 124)
 SKY = (143, 166, 199)       # #8FA6C7  light navy: pending and amended stamps
-BLUE = (44, 86, 150)        # #2C5696  bright navy: canopy, links
-MUTED = (160, 174, 196)     # #A0AEC4  sign-off text on navy
-STEEL, STEEL_DK = (154, 161, 169), (110, 116, 124)
-TIRE = (40, 44, 52)
-CHALK = (214, 221, 231)     # #D6DDE7  the ball's shaded side, chalk in shadow
+BLUE = (30, 82, 150)        # #1E5296  bright navy: canopy, links
+MUTED = SILVER              # sign-off text on navy
+STEEL, STEEL_DK = SILVER, (122, 130, 137)              # #B0B7BC / #7A8289
+TIRE = (36, 40, 48)
+CHALK = (214, 221, 231)     # #D6DDE7  shaded white, chalk in shadow
 PAPER_DK, PAPER_MD, PAPER_DKR, INK = (232, 235, 240), (238, 240, 244), (222, 226, 233), NAVY
-TURF, TURF_LT = (15, 44, 80), (20, 54, 96)             # the outfield, mown in navy stripes
-CLAY, CLAY_DK, CLAY_LT = (140, 52, 54), (114, 40, 44), (160, 66, 66)   # infield dirt
+TURF, TURF_LT = (6, 44, 82), (12, 56, 100)             # the field, mown in navy stripes
+LEATHER, LEATHER_DK, LEATHER_LT = (124, 62, 30), (88, 42, 20), (158, 88, 46)   # the football only
+# Kept for the older scene code (video kit, hype intro): the end zone and sideline paint use these.
+CLAY, CLAY_DK, CLAY_LT = (150, 10, 40), (118, 8, 32), (176, 40, 64)
 
 # Sprite letters -> colors ("." is transparent)
 PAL = {"K": NAVY_DK, "V": NAVY, "W": WHITE, "C": PAPER, "T": CHALK, "R": RED, "D": RED_DK, "L": RED_LT,
-       "U": BLUE, "S": STEEL, "N": STEEL_DK, "M": TIRE}
+       "U": BLUE, "S": STEEL, "N": STEEL_DK, "M": TIRE, "F": LEATHER, "G": LEATHER_DK, "H": LEATHER_LT}
 
 SPRITES = {
-    # the league's small baseball (14 x 14): avatars, emoji, favicon, sign-offs
-    "ball": [
-        "....KKKKKK....",
-        "..KKWWWWWWKK..",
-        ".KWRWWWWWWRWK.",
-        ".KWWRWWWWRWWK.",
-        "KWWWRWWWWRWWTK",
-        "KWWWWRWWRWWWTK",
-        "KWWWWRWWRWWWTK",
-        "KWWWWRWWRWWWTK",
-        "KWWWWRWWRWWTTK",
-        "KWWWRWWWWRWTTK",
-        ".KWWRWWWWRWTK.",
-        ".KTRTTWWTTRTK.",
-        "..KKTTTTTTKK..",
-        "....KKKKKK....",
-    ],
-    # a ball at rest on the field (7 x 7)
-    "pebble": ["..KKK..", ".KWWWK.", "KRWWWRK", "KWRWRWK", "KRWWWRK", ".KWWTK.", "..KKK.."],
-    # crossed bats (16 x 14)
+    # "ball" (the small football) and "pebble" are generated from the emblem below
+    # goalposts (16 x 14), silver with navy keylines; the key stays "bats" so older callers keep working
     "bats": [
-        "..KK........KK..",
-        ".KCCK......KTTK.",
-        "KCCCCK....KTTTTK",
-        ".KCCCCK..KTTTTK.",
-        "..KCCCCKKTTTTK..",
-        "...KCCCCKTTTK...",
-        "....KCCCCKTK....",
-        ".....KCCCCK.....",
-        ".....KKCCCK.....",
-        "....KRTKKCRK....",
-        "...KRRK..KRRK...",
-        ".KKRRK....KRRKK.",
-        "KDDDK......KDDDK",
-        ".KDK........KDK.",
+        "..KSK......KSK..",
+        "..KSK......KSK..",
+        "..KSK......KSK..",
+        "..KSK......KSK..",
+        "..KSK......KSK..",
+        "..KSK......KSK..",
+        "..KSK......KSK..",
+        "..KSSSSSSSSSSK..",
+        "..KKKKKSSKKKKK..",
+        "......KSSK......",
+        "......KSSK......",
+        "......KSSK......",
+        "......KSSK......",
+        "....KKKSSKKK....",
     ],
 }
 
@@ -172,6 +159,22 @@ TRACTOR_FRAMES = ([
     "NNNNNNNNNNNNNNK............KMMMSSMMMK........KMMMMMMMK..",
     "KKKKKKKKKKKKKK..............KMMMMMMK..........KKMMMKK...",
 ])
+def _striper(rows: list[str]) -> list[str]:
+    """Turn the grounds cart into the field striper: drop the drag mat behind it and fit a paint nozzle
+    that lays the white line the scenes paint behind the cart."""
+    g = [list(r) for r in rows]
+    for y in range(len(g)):
+        for x in range(20):
+            g[y][x] = "."
+    for y in range(21, 26):
+        g[y][20], g[y][21], g[y][22] = "K", "N", "K"
+    g[26][19:24] = list("KWWWK")
+    g[27][18:25] = list("WWWWWWW")
+    return ["".join(r) for r in g]
+
+
+TRACTOR_FRAMES = tuple(_striper(f) for f in TRACTOR_FRAMES)
+
 TRACTOR_TEXT_AT = ((28, 15), (28, 14))   # where the name starts on each frame
 TRACTOR_TEXT_MAX = 23                    # pixels of body side the name may use
 
@@ -217,54 +220,46 @@ SPRITES["tractor1"] = lettered(TRACTOR_FRAMES[1], LEAGUE_SHORT, *TRACTOR_TEXT_AT
 SPRITE_PALS: dict[str, dict] = {}
 
 
-# ---------------------------------------------------------------- the emblem: a pixel baseball
+# ---------------------------------------------------------------- the emblem: a pixel football
 @lru_cache(maxsize=None)
-def ball_body(d: int, theta: float = 38, bulge: float = .30) -> tuple[str, ...]:
-    """A d x d baseball: white with a chalk-shaded lower right, and two red seams that curve toward the
-    middle, each stitched with chevrons. Seams and stitches thicken with the size."""
-    R = c = d / 2
+def ball_body(d: int, aspect: float = .56) -> tuple[str, ...]:
+    """A d x d football at 45 degrees, nose up-right: a pointed lens of leather (two circular arcs) with
+    a shaded underside and a light top edge, and white laces drawn on the pixel diagonals so the seam
+    and every stitch stay clean staircases. Laces thicken with the size."""
+    c = d / 2
+    a = d * .5 * math.sqrt(2) / (1 + .62 * aspect) * .97      # half length, sized so the lens fits
+    b = a * aspect                                             # half width
+    R = (b * b + a * a) / (2 * b)
+    off = R - b
+    s2 = math.sqrt(.5)
     cells = {}
     for y in range(d):
         for x in range(d):
-            if math.hypot(x + .5 - c, y + .5 - c) <= R:
-                shaded = math.hypot(x + .5 - c + R * .3, y + .5 - c + R * .3) > R * 1.08
-                cells[(x, y)] = "T" if shaded else "W"
-    t = 1 if d < 36 else 2 if d < 64 else 3              # seam thickness
-    inset = 1.2 if d < 36 else 2.2 if d < 64 else 3.5    # seams stop short of the edge
-    gap = 3 if d < 36 else 4 if d < 64 else 6            # stitch spacing along the seam
-    tick = 1 if d < 36 else 2 if d < 64 else 3           # stitch length each side
-    th = math.radians(theta)
-    ex, ey = R * math.sin(th), R * math.cos(th)          # seam ends on the rim
-    mx = ex - bulge * R                                  # seam middle, closer to the center
-    ccx = (ex * ex + ey * ey - mx * mx) / (2 * (ex - mx))
-    r = ccx - mx
-    a0 = math.atan2(ey, ex - ccx)
-    for side in (-1, 1):
-        run, last, n = 0.0, None, 2000
-        for i in range(n + 1):
-            a = -a0 + 2 * a0 * i / n
-            x, y = side * (ccx - r * math.cos(a)), r * math.sin(a)
-            if math.hypot(x, y) > R - inset:
+            dx, dy = x + .5 - c, y + .5 - c
+            u = (dx - dy) * s2                                 # along the ball, toward up-right
+            v = (dx + dy) * s2                                 # across, positive toward the underside
+            if u * u + (v - off) ** 2 > R * R or u * u + (v + off) ** 2 > R * R:
                 continue
-            nx, ny = side * math.cos(a), -math.sin(a)       # across the seam
-            tx, ty = side * math.sin(a), math.cos(a)        # along the seam
-            for k in range(t):
-                off = (k - (t - 1) / 2) * .9
-                q = (int(math.floor(c + x + nx * off)), int(math.floor(c + y + ny * off)))
-                if q in cells:
-                    cells[q] = "R"
-            if last is not None:
-                run += math.hypot(x - last[0], y - last[1])
-            last = (x, y)
-            if run >= gap:
-                run = 0.0
-                for s in (-1, 1):
-                    for j in range(1, tick + 1):
-                        dd = t / 2 + j * .9
-                        q = (int(math.floor(c + x + s * nx * dd - tx * j * .75)),
-                             int(math.floor(c + y + s * ny * dd - ty * j * .75)))
-                        if q in cells:
-                            cells[q] = "R"
+            vmax = math.sqrt(max(R * R - u * u, 0)) - off
+            r = v / vmax if vmax > 0 else 0
+            cells[(x, y)] = "G" if r > .38 else "H" if (r < -.62 and abs(u) < a * .62) else "F"
+    t = 1 if d < 40 else 2 if d < 80 else 3                    # lace thickness
+    k = max(1, round(b * .2 / s2))                             # the seam sits toward the top edge
+    n = max(2, round(a * .40 * s2))                            # half length of the seam, in steps
+    cx0, cy0 = int(c) - k, int(c) - k
+    gap = 3 if d < 44 else 4 if d < 80 else 6                  # stitch spacing
+    h = 1 if d < 48 else 2 if d < 80 else 3                    # stitch reach each side
+
+    def lace(x, y):
+        if (x, y) in cells:
+            cells[(x, y)] = "W"
+    for i in range(-n, n + 1):
+        for tt in range(t):
+            lace(cx0 + i + tt, cy0 - i)
+    for i in range(-n + (n % gap), n + 1, gap):
+        for j in range(-h, h + 1):
+            for tt in range(t):
+                lace(cx0 + i + j + tt, cy0 - i + j)
     return tuple("".join(cells.get((x, y), ".") for x in range(d)) for y in range(d))
 
 
@@ -280,7 +275,7 @@ def _layer_of(cells: set, x: int, y: int, reach: int) -> int:
 
 @lru_cache(maxsize=None)
 def ball_sprite(total: int, outer: str = "RK") -> tuple[str, ...]:
-    """The emblem at total x total: the ball, then one keyline per letter of `outer` (red, then navy)."""
+    """The emblem at total x total: the football, then one keyline per letter of `outer` (red, then navy)."""
     reach = len(outer)
     body = ball_body(total - 2 * reach)
     cells = {(x + reach, y + reach) for y, row in enumerate(body) for x, ch in enumerate(row) if ch != "."}
@@ -300,6 +295,32 @@ def ball_sprite(total: int, outer: str = "RK") -> tuple[str, ...]:
 EMBLEM32 = lambda: ball_sprite(32, "RK")            # logos, icons, the primary mark
 EMBLEM48 = lambda: ball_sprite(48, "RRK")           # channel headers
 EMBLEM_SEAL = lambda: ball_sprite(100, "RRRRKK")    # the official seal (100 x 100)
+
+# The small football for avatars, emoji, favicon and sign-offs (14 x 14, navy keyline) and a tiny one
+# resting on the field (7 x 7). Generated from the same body so every size matches the emblem.
+SPRITES["ball"] = [      # hand-tuned so the seam reads at 16-48 px
+    "..............",
+    ".........K....",
+    "......KKKFK...",
+    ".....KHFFFFK..",
+    "....KHHFWWFGK.",
+    "...KHFFWWFGK..",
+    "..KHHFWWFGGK..",
+    "..KFFWWFGGGK..",
+    "..KFFFFGGGK...",
+    ".KFFFFGGGK....",
+    "..KFFGGGK.....",
+    "...KGKKK......",
+    "....K.........",
+    "..............",
+]
+SPRITES["pebble"] = [    # a football lying on the field (9 x 5)
+    "..KKKKK..",
+    ".KFFWFFK.",
+    "KFWWWWWFK",
+    ".KGGGGGK.",
+    "..KKKKK..",
+]
 
 
 def sprite(rows, scale: int = 1) -> Image.Image:
@@ -493,7 +514,7 @@ VARIANTS = {
 
 
 def lockup(a: int, b: int, variant: str = "white", sub_bold: bool = True) -> Image.Image:
-    """The short name (PSBL) in Jersey 10 (a px per font pixel) over the league name and EST. year in
+    """The short name (STFL) in Jersey 10 (a px per font pixel) over the league name and EST. year in
     Silkscreen (b px per font pixel). Keylines: red then navy on the white version."""
     fill, keys, whole_keys, ink, subkey = VARIANTS[variant]
     mask, cap_top = font("jersey").mask(LEAGUE_SHORT)
@@ -562,7 +583,7 @@ def bg_paper(w, h):
 
 
 def bg_banner(w, h, bars=1, bats=False):
-    """Navy ballpark: red rails top and bottom, bleachers fading into navy, a dithered fade to deep navy."""
+    """Navy stadium: red rails top and bottom, the stands fading into navy, a dithered fade to deep navy."""
     img = bg_plain(w, h, NAVY)
     ch = round(h * .24)
     f = round(ch * .5)
@@ -579,14 +600,15 @@ def bg_banner(w, h, bars=1, bats=False):
     return img
 
 
-WALL_H = 6          # the outfield wall above the field: red rail, padded navy wall, shadow
+WALL_H = 6          # the stadium wall above the field: red rail, padded navy wall, shadow
 SPLASH_FIELD = 32   # rows of field under the wall on the title screen
 
 
 def field_scene(img, top: int, field_h: int, tractor_x: int, frame: int = 0, ball_x: int | None = None) -> int:
-    """The ballpark strip, painted across the whole width from row `top`: the outfield wall, a mown navy
-    outfield, then the infield dirt with the drag tractor at tractor_x smoothing the clay behind it.
-    Returns the row where the field starts."""
+    """The stadium strip, painted across the whole width from row `top`: the padded wall, the field mown
+    in navy stripes with white yard lines and hash marks, and the striper at tractor_x laying a fresh
+    white sideline behind it (the line ahead of it is still faded chalk). Returns the row where the field
+    starts."""
     w = img.width
     rect(img, 0, top, w, 1, RED)                               # rail cap
     rect(img, 0, top + 1, w, WALL_H - 2, NAVY_LT)              # padded wall
@@ -594,36 +616,32 @@ def field_scene(img, top: int, field_h: int, tractor_x: int, frame: int = 0, bal
         rect(img, x, top + 1, 1, WALL_H - 2, NAVY)             # pad seams
     rect(img, 0, top + WALL_H - 1, w, 1, NAVY_DK)
     fy = top + WALL_H
-    grass = max(6, round(field_h * .36))
     px = img.load()
-    for j in range(grass):                                     # diagonal mowing stripes
+    for j in range(field_h):                                   # mowing stripes, one per five yards
         for i in range(w):
-            px[i, fy + j] = (TURF_LT if ((i + j) // 8) % 2 else TURF) + (255,)
-    rect(img, 0, fy + grass, w, 1, CLAY_DK)                    # the lip where grass meets dirt
-    dy, dh = fy + grass + 1, field_h - grass - 1
-    rect(img, 0, dy, w, dh, CLAY)
-    smooth = tractor_x + 14                                    # the mat has dragged everything left of here
-    rnd = random.Random(field_h * 7 + w)
-    for j in range(dh):
-        for i in range(w):
-            if i < smooth:
-                if j % 3 == 1:
-                    px[i, dy + j] = CLAY_LT + (255,)             # fresh drag lines
-            else:
-                t = rnd.random()
-                if t < .12:
-                    px[i, dy + j] = CLAY_DK + (255,)             # raked, cleat-scuffed dirt
-                elif t < .17:
-                    px[i, dy + j] = CLAY_LT + (255,)
+            px[i, fy + j] = (TURF_LT if (i // 10) % 2 else TURF) + (255,)
+    side = fy + field_h - 3                                    # the sideline the striper is painting
+    for x in range(0, w, 20):                                  # yard lines every ten yards
+        rect(img, x, fy + 2, 1, side - fy - 3, CHALK)
+    for x in range(0, w, 4):                                   # hash marks
+        if x % 20:
+            rect(img, x, fy + round(field_h * .30), 1, 1, CHALK)
+            rect(img, x, fy + round(field_h * .58), 1, 1, CHALK)
+    paint = tractor_x + 21                                     # the nozzle has painted everything left of here
+    for x in range(w):
+        if x < paint:
+            px[x, side] = WHITE + (255,)
+        elif x % 3 == 0:
+            px[x, side] = CHALK + (255,)
     put(img, "tractor1" if frame else "tractor", tractor_x, fy + field_h - 29)
     if ball_x is not None:
-        put(img, "pebble", ball_x, fy + field_h - 9)
+        put(img, "pebble", ball_x, side - 6)
     return fy
 
 
 def bg_splash(w=240, h=135):
-    """Title screen: deep navy with a dithered stadium glow, red rails, and the ballpark strip with the
-    drag tractor working the infield."""
+    """Title screen: deep navy with a dithered stadium glow, red rails, and the stadium strip with the
+    striper painting the sideline."""
     bars = 2
     img = bg_plain(w, h, NAVY_DK)
     dither(img, 0, bars, w, 44, NAVY, down=False)
@@ -671,7 +689,10 @@ def splash(size=(1920, 1080), b=5):
     W, H = size
     img = enlarge(bg_splash(), 8, size)
     wall_top = (135 - 2 - SPLASH_FIELD - WALL_H) * 8
-    place(img, fit_lockup(6 * b, b, W * 17 // 20, wall_top - 16 - 64), W // 2, (16 + wall_top) // 2, snap=b)
+    motto = 48 if LEAGUE_MOTTO else 0
+    place(img, fit_lockup(6 * b, b, W * 17 // 20, wall_top - 16 - 64 - motto), W // 2, (16 + wall_top - motto) // 2, snap=b)
+    if LEAGUE_MOTTO:
+        draw_text(img, LEAGUE_MOTTO.upper(), "silk", 4, W // 2, wall_top - 64, SILVER, align="c")
     return img
 
 
@@ -679,7 +700,7 @@ HEADER_W, HEADER_H, HEADER_K = 200, 67, 8
 
 
 def header(title: str, kicker: str, seed: int = 7) -> Image.Image:
-    """1600 x 533 channel header on a 200 x 67 art grid: red eyebrow, big title, the baseball on the right."""
+    """1600 x 533 channel header on a 200 x 67 art grid: red eyebrow, big title, the football on the right."""
     a = art(HEADER_W, HEADER_H, NAVY)
     grain(a, [NAVY_HI, NAVY_LO], .02, seed * 31)
     dither(a, 0, 56, HEADER_W, 9, STANDS)
@@ -697,7 +718,7 @@ def header(title: str, kicker: str, seed: int = 7) -> Image.Image:
 
 
 def footer_divider() -> Image.Image:
-    """Transparent 1600 x 180: white and red lines running into a pixel baseball (200 x 23 art grid)."""
+    """Transparent 1600 x 180: white and red lines running into a pixel football (200 x 23 art grid)."""
     a = art(200, 23)
     rect(a, 8, 10, 84, 2, RED)
     rect(a, 108, 10, 84, 2, RED)
@@ -727,21 +748,21 @@ def red_bar() -> Image.Image:
 
 
 def emblem_icon(size: int, color, k: int = 21) -> Image.Image:
-    """The large baseball (32 x 32 art) centered on a flat color."""
+    """The large football (32 x 32 art) centered on a flat color."""
     img = Image.new("RGBA", (size, size), color + (255,))
     place(img, sprite(EMBLEM32(), k), size // 2, size // 2)
     return img
 
 
 def emblem_mark(size: tuple[int, int], k: int) -> Image.Image:
-    """The large baseball on a transparent ground."""
+    """The large football on a transparent ground."""
     img = Image.new("RGBA", size, (0, 0, 0, 0))
     place(img, sprite(EMBLEM32(), k), size[0] // 2, size[1] // 2)
     return img
 
 
 def avatar(size: int, color=NAVY, round_=False) -> Image.Image:
-    """The small baseball (14 x 14) on a 20 x 20 grid that survives Discord's 40-48 px display."""
+    """The small football (14 x 14) on a 20 x 20 grid that survives Discord's 40-48 px display."""
     a = art(20, 20, None if round_ else color)
     if round_:
         ring(a, 10, 10, 0, 10, color)

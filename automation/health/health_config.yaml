@@ -1,6 +1,6 @@
 settings:
   webhook_secret: LEAGUE_WEBHOOK_AUTOMATION_HEALTH
-  username: "PSBL Systems Desk"
+  username: "STFL Systems Desk"
   alert_color: 0xBD3039
   recovery_color: 0x2E7D32
   test_color: 0x0C2340
@@ -17,12 +17,12 @@ workflows:
   # timer (cron-job.org) has probably stopped and only GitHub's late backup
   # cron is running. See automation/scheduler/README.md.
   - id: scheduler
-    name: "PSBL Scheduler"
+    name: "STFL Scheduler"
     file: "league-scheduler.yml"
     max_age_minutes: 45
 
   - id: wire-engine
-    name: "PSBL Wire Engine"
+    name: "STFL Wire Engine"
     file: "league-wire-engine.yml"
     # The scheduler starts the Wire every 15 minutes; alert after several
     # missed starts, not after a single delayed one.
@@ -30,75 +30,75 @@ workflows:
     inspect_wire_logs: true
 
   - id: league-office
-    name: "PSBL League Office Automation"
+    name: "STFL League Office Automation"
     file: "league-office.yml"
     max_age_minutes: 180
 
   - id: competition-desk
-    name: "PSBL Competition Desk"
+    name: "STFL Competition Desk"
     file: "league-competition-desk.yml"
     # Checks at 08:00 and 20:00 during the season.
     max_age_minutes: 900
 
   - id: scoreboard
-    name: "PSBL Fantrax Scoreboard"
+    name: "STFL Fantrax Scoreboard"
     file: "league-fantrax-scoreboard.yml"
     # Hourly during the regular season and playoffs.
     max_age_minutes: 180
 
   - id: lineup-alerts
-    name: "PSBL Lineup Alerts"
+    name: "STFL Lineup Alerts"
     file: "league-lineup-alerts.yml"
     # Once a day at 15:00 during the regular season and playoffs.
     max_age_minutes: 1700
 
   - id: probable-pitchers
-    name: "PSBL Probable Pitchers"
+    name: "STFL Probable Pitchers"
     file: "league-probable-pitchers.yml"
     # Several checks a day from 09:15 to 21:30 during the regular season and
     # playoffs; the longest gap is overnight (about 12 hours).
     max_age_minutes: 1000
 
   - id: morning-recap
-    name: "PSBL Morning Recap"
+    name: "STFL Morning Recap"
     file: "league-morning-recap.yml"
     # Once a day at 08:30, all year (it simply posts nothing after days
     # without MLB games).
     max_age_minutes: 1700
 
   - id: playoffs
-    name: "PSBL Fantrax Playoffs"
+    name: "STFL Fantrax Playoffs"
     file: "league-fantrax-playoffs.yml"
     # Hourly during the playoff weeks only.
     max_age_minutes: 180
 
   - id: draft-center
-    name: "PSBL Draft Center"
+    name: "STFL Draft Center"
     file: "league-draft-center.yml"
     # Every 15 minutes, only from 31 days before a Fantrax draft until a day after it.
     max_age_minutes: 60
 
   - id: commissioner-desk
-    name: "PSBL Commissioner Desk"
+    name: "STFL Commissioner Desk"
     file: "league-commissioner-desk.yml"
     # Hourly all year.
     max_age_minutes: 180
 
   - id: pick-trades
-    name: "PSBL Pick Trades"
+    name: "STFL Pick Trades"
     file: "league-pick-trades.yml"
     # Every 15 minutes all year; alert after several missed runs.
     max_age_minutes: 90
 
   - id: trade-desk
-    name: "PSBL Trade Desk"
+    name: "STFL Trade Desk"
     file: "league-trade-desk.yml"
     # Every 30 minutes all year (every 15 on trade-deadline day); alert after
     # several missed runs.
     max_age_minutes: 120
 
   - id: minor-eligibility
-    name: "PSBL Minor Eligibility"
+    name: "STFL Minor Eligibility"
     file: "league-minor-eligibility.yml"
     # Once a day at 07:00.
     max_age_minutes: 1700
@@ -106,25 +106,25 @@ workflows:
   # Prospect Board: switched off in automation/scheduler/schedule.yaml until MLB
   # publishes the next draft prospect list. Turn this back on with the job.
   # - id: prospect-board
-  #   name: "PSBL Prospect Board"
+  #   name: "STFL Prospect Board"
   #   file: "league-prospect-board.yml"
   #   # Once a day at 09:30.
   #   max_age_minutes: 1700
 
   - id: dormancy-guard
-    name: "PSBL Dormancy Guard"
+    name: "STFL Dormancy Guard"
     file: "league-dormancy-guard.yml"
     # Once a day at 06:15.
     max_age_minutes: 1700
 
   - id: archive
-    name: "PSBL League Archive"
+    name: "STFL League Archive"
     file: "league-archive.yml"
     # Once a day at 05:30.
     max_age_minutes: 1700
 
   - id: history-site
-    name: "PSBL History Site"
+    name: "STFL History Site"
     file: "league-history-site.yml"
     # Once a day at 06:15.
     max_age_minutes: 1700
