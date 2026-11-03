@@ -148,7 +148,7 @@ def main() -> None:
         "fonts": {"display": "Jersey 10", "labels": "Silkscreen"},
         "design": {
             "status": "frozen layout, 8-bit artwork",
-            "right_mark": "pixel football emblem (leather, white laces, red then navy keylines), fully inset",
+            "right_mark": "pixel football emblem (leather, white laces, silver then navy keylines), fully inset",
             "wordmark": f"{S} in Jersey 10 with red then navy keylines; wordmark file kept for legacy use",
             "footer": "transparent white/red/white divider running into a centered pixel football",
         },

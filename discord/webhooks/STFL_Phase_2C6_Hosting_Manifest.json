@@ -1,7 +1,7 @@
 {
   "phase": "2C.6-frozen",
   "style": "8-bit arcade",
-  "asset_version": "8bit-stfl-1",
+  "asset_version": "8bit-stfl-2",
   "header_dimensions": "1600x533",
   "header_grid": "200x67 pixels at 8 px",
   "header_embed_color": "#0C2340",
@@ -23,7 +23,7 @@
   },
   "design": {
     "status": "frozen layout, 8-bit artwork",
-    "right_mark": "pixel football emblem (leather, white laces, red then navy keylines), fully inset",
+    "right_mark": "pixel football emblem (leather, white laces, silver then navy keylines), fully inset",
     "wordmark": "STFL in Jersey 10 with red then navy keylines; wordmark file kept for legacy use",
     "footer": "transparent white/red/white divider running into a centered pixel football"
   }

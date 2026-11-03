@@ -9,7 +9,7 @@ edges stay crisp too.
 
 Palette: Patriots-aligned navy, red, silver and white (see the palette block below).
 The league emblem is a pixel football generated here: ball_body() paints a leather lens at
-45 degrees with white laces on the pixel diagonals, and ball_sprite() wraps it in red and navy
+45 degrees with white laces on the pixel diagonals, and ball_sprite() wraps it in silver and navy
 keylines; the small 14 x 14 football for avatars and emoji is hand-tuned in SPRITES. The
 stadium scenes (stands, padded wall, the field mown in navy stripes with chalk yard lines, and
 the field striper) replace the old ballpark.
@@ -70,12 +70,15 @@ CHALK = (214, 221, 231)     # #D6DDE7  shaded white, chalk in shadow
 PAPER_DK, PAPER_MD, PAPER_DKR, INK = (232, 235, 240), (238, 240, 244), (222, 226, 233), NAVY
 TURF, TURF_LT = (6, 44, 82), (12, 56, 100)             # the field, mown in navy stripes
 LEATHER, LEATHER_DK, LEATHER_LT = (124, 62, 30), (88, 42, 20), (158, 88, 46)   # the football only
+SKIN_LT, SKIN_LT_DK = (224, 172, 130), (184, 132, 92)  # the players' skin (two tones), with a shade each
+SKIN_DK, SKIN_DK_DK = (141, 88, 56), (102, 62, 38)
 # Kept for the older scene code (video kit, hype intro): the end zone and sideline paint use these.
 CLAY, CLAY_DK, CLAY_LT = (150, 10, 40), (118, 8, 32), (176, 40, 64)
 
 # Sprite letters -> colors ("." is transparent)
 PAL = {"K": NAVY_DK, "V": NAVY, "W": WHITE, "C": PAPER, "T": CHALK, "R": RED, "D": RED_DK, "L": RED_LT,
-       "U": BLUE, "S": STEEL, "N": STEEL_DK, "M": TIRE, "F": LEATHER, "G": LEATHER_DK, "H": LEATHER_LT}
+       "U": BLUE, "S": STEEL, "N": STEEL_DK, "M": TIRE, "F": LEATHER, "G": LEATHER_DK, "H": LEATHER_LT,
+       "P": SKIN_LT, "Q": SKIN_LT_DK, "E": SKIN_DK, "J": SKIN_DK_DK}
 
 SPRITES = {
     # "ball" (the small football) and "pebble" are generated from the emblem below
@@ -274,8 +277,8 @@ def _layer_of(cells: set, x: int, y: int, reach: int) -> int:
 
 
 @lru_cache(maxsize=None)
-def ball_sprite(total: int, outer: str = "RK") -> tuple[str, ...]:
-    """The emblem at total x total: the football, then one keyline per letter of `outer` (red, then navy)."""
+def ball_sprite(total: int, outer: str = "SK") -> tuple[str, ...]:
+    """The emblem at total x total: the football, then one keyline per letter of `outer` (silver, then navy)."""
     reach = len(outer)
     body = ball_body(total - 2 * reach)
     cells = {(x + reach, y + reach) for y, row in enumerate(body) for x, ch in enumerate(row) if ch != "."}
@@ -292,9 +295,9 @@ def ball_sprite(total: int, outer: str = "RK") -> tuple[str, ...]:
     return tuple(rows)
 
 
-EMBLEM32 = lambda: ball_sprite(32, "RK")            # logos, icons, the primary mark
-EMBLEM48 = lambda: ball_sprite(48, "RRK")           # channel headers
-EMBLEM_SEAL = lambda: ball_sprite(100, "RRRRKK")    # the official seal (100 x 100)
+EMBLEM32 = lambda: ball_sprite(32, "SK")            # logos, icons, the primary mark
+EMBLEM48 = lambda: ball_sprite(48, "SSK")           # channel headers
+EMBLEM_SEAL = lambda: ball_sprite(100, "SSSSKK")    # the official seal (100 x 100)
 
 # The small football for avatars, emoji, favicon and sign-offs (14 x 14, navy keyline) and a tiny one
 # resting on the field (7 x 7). Generated from the same body so every size matches the emblem.
@@ -320,6 +323,133 @@ SPRITES["pebble"] = [    # a football lying on the field (9 x 5)
     "KFWWWWWFK",
     ".KGGGGGK.",
     "..KKKKK..",
+]
+
+# The catch: a receiver reaching for the ball with a defender driving after him (24 wide; two run
+# frames each, legs swapped). Generic uniforms in league colors, no team marks. Skin: P/Q and E/J.
+SPRITES["receiver"] = [
+    "..........KKKK..........",
+    ".........KVVVSK.........",
+    "........KVSSSSSK........",
+    ".......KSSSSSSSSK...KK..",
+    ".......KSSSSSEEENK.KTTK.",
+    ".......KSSSSSEKENK.KTTK.",
+    ".......KSSSSSEENNKKJKKKK",
+    "........KSSSSJEENKJJJKCC",
+    "........KKSSSSKKKJJJKKCC",
+    ".......KWWWWWWWRJJJKKKEK",
+    ".......KWWWWWWWWJKKKEEEK",
+    ".......KWVVVVJJJKEEEEKK.",
+    ".......KWVWWVWJEEEKKK...",
+    "........KVWWVWWEKK......",
+    "........KVVVVWWWK.......",
+    "........KWWWWWWWK.......",
+    "........KWWWWWWWK.......",
+    "........KRRRRRRRK.......",
+    ".......KNNNKKSSSKK......",
+    "......KNNNNNSSSSSSK.....",
+    ".....KNNNNNKKSSSSSSK....",
+    "....KNKNNNK..KKSSVVK....",
+    "....KKKKNK.....KSVVK....",
+    "....KKKNK.......KVVK....",
+    "...KKKKK.......KVVK.....",
+    "..KKKKK........KVVKK....",
+    ".KTTTTK.......KWWWWWK...",
+    ".KTTTTK.......KWWWWWK...",
+    "..KKKK.........KKKKK....",
+]
+SPRITES["receiver1"] = [
+    "..........KKKK..........",
+    ".........KVVVSK.........",
+    "........KVSSSSSK........",
+    ".......KSSSSSSSSK...KK..",
+    ".......KSSSSSEEENK.KTTK.",
+    ".......KSSSSSEKENK.KTTK.",
+    ".......KSSSSSEENNKKJKKKK",
+    "........KSSSSJEENKJJJKCC",
+    "........KKSSSSKKKJJJKKCC",
+    ".......KWWWWWWWRJJJKKKEK",
+    ".......KWWWWWWWWJKKKEEEK",
+    ".......KWVVVVJJJKEEEEKK.",
+    ".......KWVWWVWJEEEKKK...",
+    "........KVWWVWWEKK......",
+    "........KVVVVWWWK.......",
+    "........KWWWWWWWK.......",
+    "........KWWWWWWWK.......",
+    "........KRRRRRRRK.......",
+    ".........KNNSSSK........",
+    "........KNNNSSNK........",
+    ".........KNSSSNNK.......",
+    ".........KSVSNKKK.......",
+    ".........KVVVNKKK.......",
+    "........KVVVSKKK........",
+    ".......KVVVKKKKK........",
+    "......KVVVKKKKKK........",
+    ".....KWWWWKTTTTTK.......",
+    ".....KWWWWKTTTTTK.......",
+    "......KKKK.KKKKK........",
+]
+SPRITES["defender"] = [
+    "..........KKKK..........",
+    ".........KWWWRK.........",
+    "........KWRRRRRK........",
+    ".......KRRRRRRRRK.......",
+    ".......KRRRRRPPPNK......",
+    ".......KRRRRRPKPNK......",
+    ".......KRRRRRPPNNK......",
+    "........KRRRRQPPNK......",
+    "........KKRRRRKKK.......",
+    ".......KVVQVVVVWK.K.....",
+    ".......KVQQQVVVVKKPK....",
+    ".......KVQQWWVPPPPPPK...",
+    ".......KQQVVWVVPPPPK....",
+    "......KQQQVVWVVVPPPK....",
+    ".......KQWWWWVVVKPK.....",
+    "......KQQQVVVVVVKK......",
+    ".......KQQQVVVVVK.......",
+    "........KQKKKKKKK.......",
+    ".......KTTTKKWWWKK......",
+    "......KTTTTTWWWWWWK.....",
+    ".....KTTTTTKKWWWWWWK....",
+    "....KTDTTTK..KKWWRRK....",
+    "....KDDDTK.....KWRRK....",
+    "....KDDTK.......KRRK....",
+    "...KDDKK.......KRRK.....",
+    "..KDDDK........KRRKK....",
+    ".KTTTTK.......KWWWWWK...",
+    ".KTTTTK.......KWWWWWK...",
+    "..KKKK.........KKKKK....",
+]
+SPRITES["defender1"] = [
+    "..........KKKK..........",
+    ".........KWWWRK.........",
+    "........KWRRRRRK........",
+    ".......KRRRRRRRRK.......",
+    ".......KRRRRRPPPNK......",
+    ".......KRRRRRPKPNK......",
+    ".......KRRRRRPPNNK......",
+    "........KRRRRQPPNK......",
+    "........KKRRRRKKK.......",
+    ".......KVVVVVPVWK.......",
+    ".......KVVVVPPVVQK......",
+    ".......KVWWQPPVQQQK.....",
+    ".......KVWVPPQQQQK......",
+    "........KWPPPVQQQK......",
+    "........KWWPWVVQK.......",
+    "........KVPPPVVVK.......",
+    "........KVVPPPVVK.......",
+    "........KKKKPKKKK.......",
+    ".........KTTWWWK........",
+    "........KTTTWWTK........",
+    ".........KTWWWTTK.......",
+    ".........KWRWTDDK.......",
+    ".........KRRRTDDK.......",
+    "........KRRRWDDK........",
+    ".......KRRRKKDDK........",
+    "......KRRRKKDDKK........",
+    ".....KWWWWKTTTTTK.......",
+    ".....KWWWWKTTTTTK.......",
+    "......KKKK.KKKKK........",
 ]
 
 
@@ -606,9 +736,10 @@ SPLASH_FIELD = 32   # rows of field under the wall on the title screen
 
 def field_scene(img, top: int, field_h: int, tractor_x: int, frame: int = 0, ball_x: int | None = None) -> int:
     """The stadium strip, painted across the whole width from row `top`: the padded wall, the field mown
-    in navy stripes with white yard lines and hash marks, and the striper at tractor_x laying a fresh
-    white sideline behind it (the line ahead of it is still faded chalk). Returns the row where the field
-    starts."""
+    in navy stripes with white yard lines and hash marks, and the catch: the receiver at `tractor_x`
+    reaching for the ball as it drops in, the defender a step behind. `frame` picks the run frame (0 or 1).
+    `ball_x` is kept for older callers and ignored: the ball always arrives at the receiver's hands.
+    Returns the row where the field starts."""
     w = img.width
     rect(img, 0, top, w, 1, RED)                               # rail cap
     rect(img, 0, top + 1, w, WALL_H - 2, NAVY_LT)              # padded wall
@@ -620,33 +751,34 @@ def field_scene(img, top: int, field_h: int, tractor_x: int, frame: int = 0, bal
     for j in range(field_h):                                   # mowing stripes, one per five yards
         for i in range(w):
             px[i, fy + j] = (TURF_LT if (i // 10) % 2 else TURF) + (255,)
-    side = fy + field_h - 3                                    # the sideline the striper is painting
+    side = fy + field_h - 3                                    # the near sideline
     for x in range(0, w, 20):                                  # yard lines every ten yards
         rect(img, x, fy + 2, 1, side - fy - 3, CHALK)
     for x in range(0, w, 4):                                   # hash marks
         if x % 20:
             rect(img, x, fy + round(field_h * .30), 1, 1, CHALK)
             rect(img, x, fy + round(field_h * .58), 1, 1, CHALK)
-    paint = tractor_x + 21                                     # the nozzle has painted everything left of here
-    for x in range(w):
-        if x < paint:
-            px[x, side] = WHITE + (255,)
-        elif x % 3 == 0:
-            px[x, side] = CHALK + (255,)
-    put(img, "tractor1" if frame else "tractor", tractor_x, fy + field_h - 29)
-    if ball_x is not None:
-        put(img, "pebble", ball_x, side - 6)
+    rect(img, 0, side, w, 1, WHITE)                            # the sideline
+    feet = side - 1
+    run = "1" if frame else ""
+    put(img, "defender" + run, tractor_x - 22, feet - len(SPRITES["defender"]) + 1)
+    put(img, "receiver" + run, tractor_x, feet - len(SPRITES["receiver"]) + 1)
+    bx, by = tractor_x + 19, feet - len(SPRITES["receiver"]) + 3   # the ball arriving at his hands
+    for k, (dx, dy) in enumerate(((-5, -3), (-9, -5), (-13, -6), (-17, -7), (-21, -7), (-25, -6))):
+        if k % 2 == 0 or k < 2:
+            rect(img, bx + dx, by + dy, 1, 1, SILVER)          # the ball's flight, fading behind it
+    put(img, "pebble", bx, by)
     return fy
 
 
 def bg_splash(w=240, h=135):
     """Title screen: deep navy with a dithered stadium glow, red rails, and the stadium strip with the
-    striper painting the sideline."""
+    catch."""
     bars = 2
     img = bg_plain(w, h, NAVY_DK)
     dither(img, 0, bars, w, 44, NAVY, down=False)
     top = h - bars - SPLASH_FIELD - WALL_H
-    field_scene(img, top, SPLASH_FIELD, 20, ball_x=round(w * .62))
+    field_scene(img, top, SPLASH_FIELD, round(w * .56))
     rect(img, 0, 0, w, bars, RED)
     rect(img, 0, h - bars, w, bars, RED)
     return img
