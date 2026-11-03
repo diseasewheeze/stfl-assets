@@ -56,27 +56,28 @@ GRID
 THE EMBLEM
 ----------
   A pixel football at 45 degrees, nose up-right: a pointed leather lens with a shaded
-  underside and a light top edge, white laces on the pixel diagonals, then a red keyline and
-  a navy keyline. ball_body()/ball_sprite() in pixel_kit draw it at any size (32 for logos and
+  underside and a light top edge, white laces on the pixel diagonals, then a silver keyline
+  and a navy keyline. ball_body()/ball_sprite() in pixel_kit draw it at any size (32 for logos and
   icons, 48 for headers, 100 for the seal); the small 14 x 14 football is hand-tuned for 64 px
   and below, with a solid seam instead of stitches so it reads at Discord sizes.
   It is an original mark: never replace it with a letter, a team mark or a team logo.
 
-THE FIELD STRIPER
------------------
-  The league's mascot machine: a 56 x 28 pixel grounds cart that drives to the right with a
-  paint nozzle behind it, laying a fresh white sideline (the line ahead of it is faded
-  chalk). The short name is painted on its white body in 3 x 5 letters. Two frames (wheels
-  straight, then the body bobbed up 1 pixel) for animation. Used on the title screen (invite
-  splash), the league site's field, the print cover and the video outro.
+THE CATCH
+---------
+  The league's title-screen moment: a receiver reaching for the ball as it drops in over his
+  hands, with a defender a step behind him. Both are 24 x 29 pixel sprites with two run frames
+  (legs swapped) for animation. Generic uniforms in league colors and no team marks: the
+  receiver in a silver helmet, white jersey, silver pants and navy socks; the defender in a red
+  helmet, navy jersey, white pants and red socks. Their faces and arms show natural skin tones
+  (#E0AC82 / #B8845C and #8D5838 / #663E26). Used on the title screen (invite splash), the
+  league site's field, the print cover and the video outro.
 
 STADIUM SCENES
 --------------
   Banners: navy with red rails top and bottom, the stands (navy seats, a few red and white
   fans) fading into navy, a dithered fade to deep navy. Goalposts (silver) flank the event
   cover. Title screen: a padded navy stadium wall with a red rail, the field mown in navy
-  stripes with chalk yard lines every ten yards and hash marks, and the striper painting the
-  sideline. No real stadium landmarks.
+  stripes with chalk yard lines every ten yards and hash marks, and the catch. No real stadium landmarks.
 
 TAGLINE
 -------
@@ -93,7 +94,7 @@ LOGOS
   Wordmark lockup: the short name (white letters, red then navy keyline), then the league
   name, then EST. year between two red rules.
   On light grounds: navy letters with a white (or off-white) keyline then red.
-  Emblem: the pixel football (leather, white laces, red and navy keylines).
+  Emblem: the pixel football (leather, white laces, silver and navy keylines).
 
   Clear space: keep empty space of at least one quarter of the letter height on every side
   of the lockup, and one quarter of the ball's width around the ball.
@@ -102,7 +103,7 @@ LOGOS
 DO
 --
   Enlarge only by whole numbers with nearest-neighbor scaling.
-  Keep the keyline order: red then navy on white letters.
+  Keep the keyline order: red then navy on white letters; silver then navy around the football.
   Use the full lockup (short name over the league name over EST. year) where a full lockup is needed.
   Use status colors by meaning: green = approved/passed/paid, red = denied/failed/owed/urgent,
   sky = pending/amended/champions, white = official/final/rulings.

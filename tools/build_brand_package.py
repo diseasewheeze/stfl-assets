@@ -54,7 +54,7 @@ and champions stamps. Status green #3FA34D appears on stamps only. Leather brown
 the football only. Team colors appear only on small jersey or stripe elements, never on league marks.
 Type: Jersey 10 ({S}, titles) and Silkscreen (labels), in brand/fonts with OFL.txt.
 Official marks: {S} in Jersey 10 with red then navy keylines, and the league
-emblem, a pixel football at 45 degrees (leather, white laces, red then navy keylines).
+emblem, a pixel football at 45 degrees (leather, white laces, silver then navy keylines).
 Tagline: "No flags. No mercy." (title screen only).
 
 01_logos                 Wordmarks (transparent white / navy, textured paper) and the football emblem
